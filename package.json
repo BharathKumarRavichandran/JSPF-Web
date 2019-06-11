@@ -18,8 +18,11 @@
 		"JS Scholarship"
 	],
 	"author": "Bharath Kumar Ravichandran",
-	"repository": "https://github.com/BharathKumarRavichandran/JSPF-Web",
 	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/BharathKumarRavichandran/JSPF-Web"
+	},
 	"dependencies": {},
 	"devDependencies": {
 		"@babel/core": "^7.4.5",
