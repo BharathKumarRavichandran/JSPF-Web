@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        SIGNUP - JSPF
+        </title>
+    
+    </head>
+
+    <body id="signup_body">
+        
+        <div id="signup_title">
+            
+            <h1> SIGN UP </h1>
+                    
+        </div>
+        
+        <form action=" " id="signup_form" >
+            <div id="email_div">
+                <br>
+                <label for="email_id">Email ID *:</label>
+                <input type="email" id="email_id" required>
+            </div>
+            
+            <br>
+            <br> 
+  
+            <div id="ver_code">
+                <label for="ver_code_id"> Verification Code* :</label>
+                <input type="number" id="ver_code_id" required>
+            </div>
+            <br>
+           <input id="submit_signup" type="submit" value=" SUBMIT TO PROCEED ">
+        </form>
+         
+        <br><br>
+        
+        <form action=" " id="primary_info">
+            <div id="your_name">
+                <br>
+                <label for="name_id">Name *:</label>
+                <input type="text" id="name_id" required>
+            </div>
+            
+            <div id="your_roll_no">
+                <br>
+                <label for="roll_no_id">Roll No *:</label>
+                <input type="number" id="roll_no_id" required>
+            </div>
+            
+            <div id="your_dept">
+                <br>
+                <label for="dept_id"> Department *:</label>
+                <input list="dept_options" id="dept_id" required>
+                <datalist id="dept_options">
+                    <option value="CSE">
+                    <option value="ECE">
+                    <option value="EEE">
+                    <option value="ICE">
+                    <option value="MECH">
+                    <option value="CIVIL">
+                    <option value="PROD">
+                    <option value="MME">
+                    <option value="ARCHI">
+                    <option value="CHEM">
+                </datalist> 
+            </div>
+            
+            <div id="your_tshirt_size">
+                <br>
+                <label for="tshirt_id"> T Shirt Size *:</label>
+                <input list="tshirt_options" id="tshirt_id" required>
+                <datalist id="tshirt_options">
+                    <option value="S">
+                    <option value="M">
+                    <option value="L">
+                    <option value="XL">
+                    <option value="XXL">
+                </datalist> 
+            </div>
+            
+            <div id="your_ph_num">
+                <br>
+                <label for="ph_num_id">Phone Num  *:</label>
+                <input type="number" id="ph_num_id" required>
+            </div>
+            
+            <div id="your_what_num">
+                <br>
+                <label for="wh_num_id">Whatsapp Num *:</label>
+                <input type="number" id="wh_num_id" required>
+            </div>
+            <br>
+            <input id="submit_primary_info" type="submit" value=" SIGNUP ">
+        </form>
+    </body>
+</html>
