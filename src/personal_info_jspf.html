@@ -4,47 +4,69 @@
         <title>
         PERSONAL INFO - JSPF
         </title>
+	
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
         
     </head>
+    
+    <style>
+        
+    .nav-pills .nav-link:not(.active) {
+    background-color: black;
+    color: white;
+        }
 
-    <body id="personal_info_body">
-               
-        <div id="navig">
+    .nav-pills .nav-link.active {
+        background-color: white;
+        color: black;
+        }
+        
+    </style>
+
+    <body id="personal_info_body" class="container">
+        
+        <nav class="nav-pills justify-content-center">        
+        <div id="navig" class="row" >
             
-            <a href=""> General Instructions </a>
+            <a href="" class="nav-link col-md-2"> General Instructions </a>
             <br>
-            <a href="personal_info_jspf.html"> Personal Information </a>
+            <a href="personal_info_jspf.html" class="nav-link active col-md-2"> Personal Information </a>
             <br>
-            <a href="cert_jspf.html"> Certificates and Grade sheets </a>
+            <a href="cert_jspf.html" class="nav-link col-md-2"> Certificates and Grade sheets </a>
             <br>
-            <a href="proj_abs_jspf.html"> Project Abstract </a>
+            <a href="proj_abs_jspf.html" class="nav-link col-md-2"> Project Abstract </a>
             <br>
-            <a href="essays_jspf.html"> Essays </a>
+            <a href="essays_jspf.html" class="nav-link col-md-2"> Essays </a>
             <br>
-            <a href="review_jspf.html"> Review </a>
+            <a href="review_jspf.html" class="nav-link col-md-2"> Review </a>
             <br>
             <br>
             
         </div>
-        
-         <h1> Please introduce yourself in 1000 characters </h1>
+        </nav>
         
         <br>
         
-        <form action=" " id="intro_form" >
-            <div id="intro_div" >
-                
-                <label for="intro_id"> INTRODUCTION * </label>
-                <br>
-                <br>
-                <textarea id="intro_id" maxlength="1100" form="intro_form" cols="100" rows="10" required >
-                </textarea>
-            </div>
-            <br>
-            <br>
-            <input id="submit_intro" type="submit" value="SUBMIT">
+         <h1 class="font-weight-bold text-center display-4"> Please introduce yourself in 1000 characters </h1>
         
+         <br>
+        <div id="intro_div" class="form-group" >
+        <form action=" " id="intro_form" >   
+            
+                <label for="intro_id" class="font-weight-bold h3"> INTRODUCTION * </label>
+                <br>
+                <br>
+                <textarea id="intro_id" class="form-control" maxlength="1100" form="intro_form" cols="100" rows="10" required >
+                </textarea>
+                <br>
+                <br>
+                <input id="submit_intro" class="btn btn-dark" type="submit" value="SUBMIT">
+
         </form>
+        </div>
     
     </body>
 </html>

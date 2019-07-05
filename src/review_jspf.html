@@ -4,29 +4,50 @@
         <title>
         REVIEW - JSPF
         </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
         
     </head>
-
-    <body id="final_review_body">
+    
+    <style>
         
-        <div id="navig">
+    .nav-pills .nav-link:not(.active) {
+    background-color: black;
+    color: white;
+        }
+
+    .nav-pills .nav-link.active {
+        background-color: white;
+        color: black;
+        }
+        
+    </style>
+
+    <body id="final_review_body" class="container">
+        
+         <nav class="nav-pills justify-content-center ">        
+         <div id="navig" class="row" >
             
-            <a href=""> General Instructions </a>
+            <a href="" class="nav-link col-md-2"> General Instructions </a>
             <br>
-            <a href="personal_info_jspf.html"> Personal Information </a>
+            <a href="personal_info_jspf.html" class="nav-link col-md-2"> Personal Information </a>
             <br>
-            <a href="cert_jspf.html"> Certificates and Grade sheets </a>
+            <a href="cert_jspf.html" class="nav-link col-md-2"> Certificates and Grade sheets </a>
             <br>
-            <a href="proj_abs_jspf.html"> Project Abstract </a>
+            <a href="proj_abs_jspf.html" class="nav-link col-md-2"> Project Abstract </a>
             <br>
-            <a href="essays_jspf.html"> Essays </a>
+            <a href="essays_jspf.html" class="nav-link col-md-2"> Essays </a>
             <br>
-            <a href="review_jspf.html"> Review </a>
+            <a href="review_jspf.html" class="nav-link active col-md-2"> Review </a>
             <br>
             <br>
             
         </div>
-        <h1> REVIEW </h1>
+        </nav>
+        <br>
+    
+        <h1 class="display-4 text-center font-weight-bold"> REVIEW </h1>
         
           
     </body>

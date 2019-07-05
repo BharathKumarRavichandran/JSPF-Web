@@ -4,17 +4,34 @@
         <title>
         WEB MAIL - JSPF
         </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
         
     </head>
+    
+    <style>
+    .nav-pills .nav-link:not(.active) {
+    background-color: black;
+    color: white;
+        }
 
-    <body id="web_mail_body">
-          <h1> VERIFY YOUR WEB MAIL TO PROCEED </h1>
+    .nav-pills .nav-link.active {
+        background-color: white;
+        color: black;
+        }
+    </style>
+
+    <body id="web_mail_body" class="container">
+          <h1  class="display-4 font-weight-bold text-center"> VERIFY YOUR WEB MAIL TO PROCEED </h1>
+        <br>
+        <div id="web_mail_division">
         <form action=" " id="web_mail_form" >
             <div id="web_mail_id_div">
                 <br>
-                <label for="web_id"> Web mail ID * </label>
+                <label for="web_id"  class="h3 font-weight-bold"> Web mail ID * </label>
                 <br>
-                <input type="email" id="web_id" placeholder= "<rollno>@nitt.edu"required>
+                <input type="email" class="form-control" id="web_id" placeholder= "<rollno>@nitt.edu"required>
             
             </div>
             
@@ -23,16 +40,17 @@
             
             <div id="web_ver_div">
                 <br>
-                <label for="web_ver_id"> Verification Code * </label>
+                <label for="web_ver_id"  class="h3 font-weight-bold"> Verification Code * </label>
                 <br>
-                <input type="number" id="web_ver_id" required>
+                <input class="form-control" type="number" id="web_ver_id" required>
             
             
             </div>
             <br>
             <br>
-            <input id="submit_web_mail" type="submit" value="SUBMIT">
+            <input id="submit_web_mail" class="btn btn-dark" type="submit" value="SUBMIT">
         
         </form>
+        </div>
     
     </body>

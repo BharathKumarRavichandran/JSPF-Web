@@ -4,79 +4,97 @@
         <title>
         Project Abstract - JSPF
         </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
         
     </head>
+    <style>
+    .nav-pills .nav-link:not(.active) {
+    background-color: black;
+    color: white;
+        }
 
-    <body id="proj_abs_body">
+    .nav-pills .nav-link.active {
+        background-color: white;
+        color: black;
+        }
+    </style>
+    <body id="proj_abs_body" class="container">
                
-        <div id="navig">
+        <nav class="nav-pills justify-content-center">        
+        <div id="navig" class="row" >
             
-            <a href=""> General Instructions </a>
+            <a href="" class="nav-link col-md-2"> General Instructions </a>
             <br>
-            <a href="personal_info_jspf.html"> Personal Information </a>
+            <a href="personal_info_jspf.html" class="nav-link col-md-2"> Personal Information </a>
             <br>
-            <a href="cert_jspf.html"> Certificates and Grade sheets </a>
+            <a href="cert_jspf.html" class="nav-link col-md-2"> Certificates and Grade sheets </a>
             <br>
-            <a href="proj_abs_jspf.html"> Project Abstract </a>
+            <a href="proj_abs_jspf.html" class="nav-link col-md-2 active"> Project Abstract </a>
             <br>
-            <a href="essays_jspf.html"> Essays </a>
+            <a href="essays_jspf.html" class="nav-link col-md-2"> Essays </a>
             <br>
-            <a href="review_jspf.html"> Review </a>
+            <a href="review_jspf.html" class="nav-link col-md-2"> Review </a>
             <br>
             <br>
             
         </div>
-        
-         <h1> Project Abstract Submission </h1>
-
-        <h2> Review by mentors </h2>
-        <div id="google_doc_intro"> Please watch this Video on 'Introduction to google docs' :  </div>
-        
+        </nav>
         <br>
     
-        <form action=" " id="proj_review_form" >
-            <div id="proj_review_div" >
-                
-                <label for="proj_review_id"> Enter Google Doc Link of your project abstract (make sure you turn on the "anyone can suggest" option)  * </label>
-                <br>
-                <br>
-                <input id="proj_review_id"  type="text" required >
-
-            </div>
-            <br>
-            <input id="submit_proj_review" type="submit" value="SUBMIT for review by mentors">
-        
-        </form>
+         <h1 class="display-4 text-center font-weight-bold"> Project Abstract Submission </h1>
         <br>
-         <h2> Final submission </h2>
-        <form action=" " id="proj_submission_form" >
-            <div id="proj_submission_div" >
-                
-                <label for="proj_submission_id"> One page abstract of your technical/inter-disciplinary project * </label>
-                <br>
-                <br>
-                <input id="proj_submission_id"  type="file"  accept="application/pdf" required >
-
-            </div>
-            <br>
-            <br>
+        <h2 class="h2 text-center font-weight-bold"> Review by mentors </h2>
+        <div class="h3 font-weight-bold" id="google_doc_intro"> Please watch this Video on 'Introduction to google docs' :  </div>
+        <a  class="h3" href=""> YouTube Link </a>
+        
+        <br><br>
+    
+        <div class="h4" id="proj_review_div" class="form-group"  >
             
-            <div id="supp_files_submission_div" >
-                
-                <label for="supp_files_submission_id"> Further supporting images/videos (max 2) </label>
-                <br>
-                <br>
-                <input id="supp_files_subm_1_id"  type="file" >
-                <br>
-                <input id="supp_files_subm_2_id"  type="file" >
+        <form action=" " id="proj_review_form" >    
+                <label for="proj_review_id" class="font-weight-bold"> Enter Google Doc Link of your project abstract (make sure you turn on the "anyone can suggest" option)  * </label>
+                <input id="proj_review_id"  class="form-control" type="text" required >
 
-
-            </div>
-            <br>
             
-            <input id="submit_proj_subm" type="submit" value="SUBMIT">
+            <br>
+            <input id="submit_proj_review" class="btn btn-dark" type="submit" value="SUBMIT for review by mentors">
         
         </form>
+        </div>
+        <br>
+        
+         <h2 class="h2 text-center font-weight-bold"> Final submission </h2>
+        <div  class="h4" id="proj_spp_submission_div" class="form-group"  >
+            
+        <form action=" " id="proj_submission_form" >
+                
+                <label for="proj_submission_id" class="font-weight-bold"> One page abstract of your technical/inter-disciplinary project * </label>
+                <br>
+                <br>
+                <input id="proj_submission_id"  class="form-control-file" type="file"  accept="application/pdf" required >
+
+            
+            <br>
+            <br>
+           
+                
+                <label class="font-weight-bold" for="supp_files_submission_id"> Further supporting images/videos (max 2) </label>
+                <br>
+                <br>
+                <input id="supp_files_subm_1_id" class="form-control-file" type="file" >
+                <br>
+                <input id="supp_files_subm_2_id" class="form-control-file" type="file" >
+
+
+            
+            <br>
+                
+            <input id="submit_proj_subm" class="btn btn-dark" type="submit" value="SUBMIT">
+        
+        </form>
+        </div>
 
     
     </body>

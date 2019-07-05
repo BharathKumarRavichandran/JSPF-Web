@@ -4,37 +4,56 @@
         <title>
         Certificates and Grade sheets - JSPF
         </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
         
     </head>
+    
+    <style>
+    .nav-pills .nav-link:not(.active) {
+    background-color: black;
+    color: white;
+        }
 
-    <body id="cert_grade_body">
+    .nav-pills .nav-link.active {
+        background-color: white;
+        color: black;
+        }
+    </style>
+
+    <body id="cert_grade_body" class="container">
         
-        <div id="navig">
+        <nav class="nav-pills justify-content-center">        
+        <div id="navig" class="row" >
             
-            <a href=""> General Instructions </a>
+            <a href="" class="nav-link col-md-2"> General Instructions </a>
             <br>
-            <a href="personal_info_jspf.html"> Personal Information </a>
+            <a href="personal_info_jspf.html" class="nav-link col-md-2"> Personal Information </a>
             <br>
-            <a href="cert_jspf.html"> Certificates and Grade sheets </a>
+            <a href="cert_jspf.html" class="nav-link active col-md-2"> Certificates and Grade sheets </a>
             <br>
-            <a href="proj_abs_jspf.html"> Project Abstract </a>
+            <a href="proj_abs_jspf.html" class="nav-link col-md-2"> Project Abstract </a>
             <br>
-            <a href="essays_jspf.html"> Essays </a>
+            <a href="essays_jspf.html" class="nav-link col-md-2"> Essays </a>
             <br>
-            <a href="review_jspf.html"> Review </a>
+            <a href="review_jspf.html" class="nav-link col-md-2"> Review </a>
             <br>
             <br>
-        
+            
         </div>
-        
-          <h1> Certificates and Grade Sheets upload </h1>
+        </nav>
+    
+       <br>
+        <h1 class="display-4 text-center font-weight-bold"> Certificates and Grade Sheets upload </h1>
+        <br>
+        <div id="cert_and_grade_div" class="form-group" >
         <form action=" " id="cert_grade_form" >
             <div id="sem_grade_div" >
                 
-                <label for="sem_grade_id"> Scanned copy of original Semester 1 grade sheet * </label>
-                <br>
-                <br>
-                <input type="file" id="sem_grade_id" accept= "image/jpeg" required>
+                <div class="h3" ><label for="sem_grade_id" class="font-weight-bold h3" > Scanned copy of original Semester 1 grade sheet * </label></div>
+                
+                <input type="file"  class="form-control-file" id="sem_grade_id" accept= "image/jpeg" required>
                 
             </div>
             <br>
@@ -42,10 +61,9 @@
             
             <div id="cert_nitt_div" >
                 
-                <label for="cert_nitt_id"> Scanned copy of certificate of participation or merit of the contest conducted by NITT *</label>
-                <br>
-                <br>
-                <input type="file" id="cert_nitt_id" accept= "image/jpeg" required>
+                <div class="h3" ><label for="cert_nitt_id" class="font-weight-bold h3"> Scanned copy of certificate of participation or merit of the contest conducted by NITT *</label></div>
+                
+                <input type="file" class="form-control-file" id="cert_nitt_id" accept= "image/jpeg" required>
                 
             </div>
             <br>
@@ -53,10 +71,9 @@
             
             <div id="cert_out_div" >
                 
-                <label for="cert_out_id"> Scanned copy of certificate of participation or merit of the contest conducted by institutes other than NITT * </label>
-                <br>
-                <br>
-                <input type="file" id="cert_out_id"  accept= "image/jpeg" required>
+                <div class="h3" ><label for="cert_out_id" class="font-weight-bold h3"> Scanned copy of certificate of participation or merit of the contest conducted by institutes other than NITT * </label></div>
+              
+                <input type="file" class="form-control-file" id="cert_out_id"  accept= "image/jpeg" required>
                 
             </div>
             <br>
@@ -64,17 +81,16 @@
             
             <div id="cert_mooc_div" >
                 
-                <label for="cert_mooc_id"> Scanned copy of the original grade sheet of the completed MOOC * </label>
-                <br>
-                <br>
-                <input type="file" id="cert_mooc_id" accept= "image/jpeg" required>
+                <div class="h3" ><label for="cert_mooc_id" class="font-weight-bold h3"> Scanned copy of the original grade sheet of the completed MOOC * </label></div>
+                
+                <input type="file"  class="form-control-file" id="cert_mooc_id" accept= "image/jpeg" required>
                 
             </div>
             <br>
             <br>
-            <input id="submit_cert_grade" type="submit" value="SUBMIT">
+            <input id="submit_cert_grade" class="btn btn-dark" type="submit" value="SUBMIT">
         
         </form>
-    
+        </div>    
     </body>
 </html>

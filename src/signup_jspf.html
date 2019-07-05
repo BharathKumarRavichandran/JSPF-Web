@@ -4,54 +4,72 @@
         <title>
         SIGNUP - JSPF
         </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     
     </head>
+    
+    <style>
+    .nav-pills .nav-link:not(.active) {
+    background-color: black;
+    color: white;
+        }
 
-    <body id="signup_body">
+    .nav-pills .nav-link.active {
+        background-color: white;
+        color: black;
+        }
+    </style>
+
+    <body id="signup_body" class="container">
         
         <div id="signup_title">
             
-            <h1> SIGN UP </h1>
+            <h1 class="font-weight-bold display-4 text-center"> SIGN UP </h1>
                     
         </div>
         
+        <div id="signup_form_div" class="form-group" >
         <form action=" " id="signup_form" >
             <div id="email_div">
                 <br>
-                <label for="email_id">Email ID *:</label>
-                <input type="email" id="email_id" required>
+                <label for="email_id" class="h3 font-weight-bold">Email ID *:</label>
+                <input type="email" class="form-control col-md-6" id="email_id" required>
             </div>
             
             <br>
             <br> 
   
             <div id="ver_code">
-                <label for="ver_code_id"> Verification Code* :</label>
-                <input type="number" id="ver_code_id" required>
+                <label for="ver_code_id"  class="h3 font-weight-bold"> Verification Code* :</label>
+                <input type="number" class="form-control col-md-6" id="ver_code_id" required>
             </div>
             <br>
-           <input id="submit_signup" type="submit" value=" SUBMIT TO PROCEED ">
+           <input id="submit_signup" class="btn btn-dark" type="submit" value=" SUBMIT TO PROCEED ">
         </form>
+        </div>
          
         <br><br>
         
+        <div id="primary_info_div" class="form-group" >
         <form action=" " id="primary_info">
             <div id="your_name">
                 <br>
-                <label for="name_id">Name *:</label>
-                <input type="text" id="name_id" required>
+                <label for="name_id"  class="h3 font-weight-bold">Name *:</label>
+                <input type="text" class="form-control col-md-6" id="name_id" required>
             </div>
             
             <div id="your_roll_no">
                 <br>
-                <label for="roll_no_id">Roll No *:</label>
-                <input type="number" id="roll_no_id" required>
+                <label for="roll_no_id"  class="h3 font-weight-bold">Roll No *:</label>
+                <input type="number"  class="form-control col-md-3" id="roll_no_id" required>
             </div>
             
             <div id="your_dept">
                 <br>
-                <label for="dept_id"> Department *:</label>
-                <input list="dept_options" id="dept_id" required>
+                <label for="dept_id"  class="h3 font-weight-bold"> Department *:</label>
+                <input list="dept_options" class="form-control col-md-2" id="dept_id" required>
                 <datalist id="dept_options">
                     <option value="CSE">
                     <option value="ECE">
@@ -68,8 +86,8 @@
             
             <div id="your_tshirt_size">
                 <br>
-                <label for="tshirt_id"> T Shirt Size *:</label>
-                <input list="tshirt_options" id="tshirt_id" required>
+                <label for="tshirt_id"  class="h3 font-weight-bold"> T Shirt Size *:</label>
+                <input list="tshirt_options" class="form-control col-md-2" id="tshirt_id" required>
                 <datalist id="tshirt_options">
                     <option value="S">
                     <option value="M">
@@ -78,20 +96,37 @@
                     <option value="XXL">
                 </datalist> 
             </div>
-            
-            <div id="your_ph_num">
+            <div class="form-row">
+            <div id="your_ph_num" class="form-group  col-md-6">
                 <br>
-                <label for="ph_num_id">Phone Num  *:</label>
-                <input type="number" id="ph_num_id" required>
+                <label for="ph_num_id"  class="h3 font-weight-bold">Phone Num  *:</label>
+                <input type="number" class="form-control" id="ph_num_id" required>
             </div>
             
-            <div id="your_what_num">
+            <div id="your_what_num" class="form-group  col-md-6">
                 <br>
-                <label for="wh_num_id">Whatsapp Num *:</label>
-                <input type="number" id="wh_num_id" required>
+                <label for="wh_num_id"  class="h3 font-weight-bold">Whatsapp Num *:</label>
+                <input type="number" class="form-control" id="wh_num_id" required>
+            </div>
+            </div>
+            
+            <div class="form-row">
+            <div id="password_1" class="form-group col-md-6"> 
+                <br>
+                <label for="pass_1_id"  class="h3 font-weight-bold"> Enter a password *:</label>
+                <input type="password" class="form-control" id="pass_1_id" required>
+            </div>
+            
+            <div id="password_2" class="form-group col-md-6">
+                <br>
+                <label for="pass_2_id"  class="h3 font-weight-bold"> Re-enter your password *:</label>
+                <input type="password" class="form-control" id="pass_2_id" required>
+            </div>
+                
             </div>
             <br>
-            <input id="submit_primary_info" type="submit" value=" SIGNUP ">
+            <input id="submit_primary_info" class="btn btn-dark" type="submit" value=" SIGNUP ">
         </form>
+        </div>
     </body>
 </html>
