@@ -13,6 +13,28 @@
     
     <style>
         
+@media screen and (min-width: 200px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+
+@media screen and (min-width: 500px) {
+html{
+    font-size: 12px;
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  html{
+    font-size: 15px;
+  }
+}
+
+
+        
     .nav-pills .nav-link:not(.active) {
     background-color: black;
     color: white;
@@ -27,7 +49,7 @@
 
     <body id="essays_body" class="container">
                
-        <nav class="nav-pills justify-content-center">        
+        <nav class="nav-pills justify-content-center" style="font-size: 1rem ">        
         <div id="navig" class="row" >
             
             <a href="" class="nav-link col-md-2"> General Instructions </a>
@@ -47,11 +69,11 @@
         </div>
         </nav>
          <br>
-         <h1 class="display-4 font-weight-bold text-center"> Essays Submission </h1>
+         <h1 class="font-weight-bold text-center" style="font-size: 3rem "> Essays Submission </h1>
         <br>
-        <h2 class="font-weight-bold text-center"> Review by mentors (Google Doc Link) </h2>
-        <div class="h3 font-weight-bold" id="google_doc_intro"> Please watch this Video on 'Introduction to google docs' :  </div>
-        <a  class="h3" href=""> YouTube Link </a>
+        <h2 class="font-weight-bold text-center" style="font-size: 2rem "> Review by mentors (Google Doc Link) </h2>
+        <div class="font-weight-bold" id="google_doc_intro" style="font-size: 1.5rem "> Please watch this Video on 'Introduction to google docs' :  </div>
+        <a  style="font-size: 1.5rem " href=""> YouTube Link </a>
         
         <br><br>
     
@@ -59,19 +81,19 @@
         <form action=" " id="essays_review_form" >
             
                 
-                <label for="sop_review_id" class="h3 font-weight-bold"> Statement of purpose * </label>
+                <label for="sop_review_id" class="font-weight-bold" style="font-size: 1.5rem "> Statement of purpose * </label>
                 <br>
                 <input id="sop_review_id" class="form-control"   type="text" required >
                 <br>
                 
                 
-                <label for="comm_review_id" class="h3 font-weight-bold"> 'For the community' * </label>
+                <label for="comm_review_id" class="font-weight-bold" style="font-size: 1.5rem "> 'For the community' * </label>
                 <br>
                 <input id="comm_review_id"  class="form-control" type="text" required >
                 <br>
                 
                 
-                <label for="society_review_id" class="h3 font-weight-bold"> 'For the society' * </label>
+                <label for="society_review_id" class="font-weight-bold" style="font-size: 1.5rem "> 'For the society' * </label>
                 <br>
                 <input id="society_review_id" class="form-control"  type="text" required >
                 <br>
@@ -83,22 +105,22 @@
         </form>
         </div>
         <br>
-         <h2 class="font-weight-bold text-center" > Final submission </h2>
+         <h2 class="font-weight-bold text-center" style="font-size: 2rem "> Final submission </h2>
         <div id="essays_submission_div" class="form-group"  >
         <form action=" " id="essays_submission_form" >
                 
-                <label for="sop_submission_id" class="h3 font-weight-bold"> Statement of purpose * </label>
+                <label for="sop_submission_id" class="font-weight-bold" style="font-size: 1.5rem "> Statement of purpose * </label>
                 <br>
                 <input id="sop_submission_id"  class="form-control-file"  type="file"  accept="application/pdf" required >
                 <br>
                 
-                <label for="comm_submission_id" class="h3 font-weight-bold"> 'For the community' essay * </label>
+                <label for="comm_submission_id" class="font-weight-bold" style="font-size: 1.5rem "> 'For the community' essay * </label>
                 <br>
                 <input id="comm_submission_id"  class="form-control-file" type="file"  accept="application/pdf" required >
                 <br>
 
                 
-                <label for="society_submission_id" class="h3 font-weight-bold"> 'For the society' essay  * </label>
+                <label for="society_submission_id" class="font-weight-bold" style="font-size: 1.5rem "> 'For the society' essay  * </label>
                 <br>
                 <input id="society_submission_id"   class="form-control-file" type="file"  accept="application/pdf" required >
                 <br>

@@ -11,6 +11,28 @@
     </head>
     
     <style>
+        
+    @media screen and (min-width: 200px) {
+      html {
+        font-size: 10px;
+      }
+    }
+
+
+    @media screen and (min-width: 500px) {
+    html{
+        font-size: 12px;
+      }
+    }
+
+
+    @media screen and (min-width: 1000px) {
+      html{
+        font-size: 15px;
+      }
+    }
+
+
     .nav-pills .nav-link:not(.active) {
     background-color: black;
     color: white;
@@ -24,7 +46,7 @@
 
     <body id="cert_grade_body" class="container">
         
-        <nav class="nav-pills justify-content-center">        
+        <nav class="nav-pills justify-content-center" style="font-size: 1rem ">        
         <div id="navig" class="row" >
             
             <a href="" class="nav-link col-md-2"> General Instructions </a>
@@ -45,13 +67,13 @@
         </nav>
     
        <br>
-        <h1 class="display-4 text-center font-weight-bold"> Certificates and Grade Sheets upload </h1>
+        <h1 class="text-center font-weight-bold" style="font-size: 3rem "> Certificates and Grade Sheets upload </h1>
         <br>
         <div id="cert_and_grade_div" class="form-group" >
         <form action=" " id="cert_grade_form" >
             <div id="sem_grade_div" >
                 
-                <div class="h3" ><label for="sem_grade_id" class="font-weight-bold h3" > Scanned copy of original Semester 1 grade sheet * </label></div>
+                <div style="font-size: 2rem "><label for="sem_grade_id" class="font-weight-bold" style="font-size: 2rem " > Scanned copy of original Semester 1 grade sheet * </label></div>
                 
                 <input type="file"  class="form-control-file" id="sem_grade_id" accept= "image/jpeg" required>
                 
@@ -61,7 +83,7 @@
             
             <div id="cert_nitt_div" >
                 
-                <div class="h3" ><label for="cert_nitt_id" class="font-weight-bold h3"> Scanned copy of certificate of participation or merit of the contest conducted by NITT *</label></div>
+                <div style="font-size: 2rem "><label for="cert_nitt_id" class="font-weight-bold" style="font-size: 2rem "> Scanned copy of certificate of participation or merit of the contest conducted by NITT *</label></div>
                 
                 <input type="file" class="form-control-file" id="cert_nitt_id" accept= "image/jpeg" required>
                 
@@ -71,7 +93,7 @@
             
             <div id="cert_out_div" >
                 
-                <div class="h3" ><label for="cert_out_id" class="font-weight-bold h3"> Scanned copy of certificate of participation or merit of the contest conducted by institutes other than NITT * </label></div>
+                <div style="font-size: 2rem "><label for="cert_out_id" class="font-weight-bold" style="font-size: 2rem "> Scanned copy of certificate of participation or merit of the contest conducted by institutes other than NITT * </label></div>
               
                 <input type="file" class="form-control-file" id="cert_out_id"  accept= "image/jpeg" required>
                 
@@ -81,7 +103,7 @@
             
             <div id="cert_mooc_div" >
                 
-                <div class="h3" ><label for="cert_mooc_id" class="font-weight-bold h3"> Scanned copy of the original grade sheet of the completed MOOC * </label></div>
+                <div style="font-size: 2rem " ><label for="cert_mooc_id" class="font-weight-bold" style="font-size: 2rem "> Scanned copy of the original grade sheet of the completed MOOC * </label></div>
                 
                 <input type="file"  class="form-control-file" id="cert_mooc_id" accept= "image/jpeg" required>
                 
