@@ -8,7 +8,7 @@
 		"lint": "eslint .; exit 0",
 		"lint:fix": "eslint . --fix",
 		"serve:dev": "webpack --mode development --module-bind js=babel-loader",
-		"start": "webpack-dev-server --mode development --open",
+		"start": "webpack-dev-server --mode development --open --host 0.0.0.0",
 		"watch": "webpack-dev-server --inline --hot"
 	},
 	"keywords": [
@@ -23,7 +23,12 @@
 		"type": "git",
 		"url": "https://github.com/BharathKumarRavichandran/JSPF-Web"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@material-ui/core": "4.2.0",
+		"@material-ui/icons": "4.2.1",
+		"react-router": "5.0.1",
+		"react-router-dom": "5.0.1"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.4.5",
 		"@babel/preset-env": "^7.4.5",
