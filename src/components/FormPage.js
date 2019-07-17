@@ -18,8 +18,8 @@ export default function FormPage() {
 		<div className={classes.root}>
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
-				{/* <Route path="/form" component={Instructions}/> */}
-				<Instructions></Instructions>
+				<Route path="/form" component={Instructions}/>
+				{/* <Instructions></Instructions> */}
 			</main>
 		</div>
 	);

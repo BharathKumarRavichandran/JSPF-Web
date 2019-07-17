@@ -13,10 +13,11 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function Instructions() {
+export default function Instructions(props) {
+	console.log(props.match);
 	const classes = useStyles();
 	return (
-		<Paper maxWidth="sm" className={classes.paper}>
+		<Paper className={classes.paper}>
 			<Typography variant="h3" className={classes.heading} gutterBottom>GENERAL INSTRUCTIONS</Typography>
 			<Typography paragraph>
                 Candidates must submit all documents adhering to the instructions provided in each section.
