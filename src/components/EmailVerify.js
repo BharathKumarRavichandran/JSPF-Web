@@ -74,7 +74,6 @@ export default function EmailVerify(props) {
 				setloading(true);
 				try {
 					const res = await checkCode(email, code,props.isInsti);
-					console.log('TCL: handleSubmit -> res', res);
 					setloading(false);
 					if (res.status == 200) {
 						if (!props.isInsti) {
@@ -88,7 +87,8 @@ export default function EmailVerify(props) {
 
 					} else {
 						setCodeError(true);
-						setError('Wrong verification code');
+						if(res.status==400)
+							setError(res.data.message);
 					}
 
 				} catch (error) {
