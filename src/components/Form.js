@@ -19,6 +19,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import FormPage from './FormPage';
 import { checkFormAccess } from '../utils/api.helper';
 import EmailVerify from './EmailVerify';
+import { Box, CircularProgress } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -48,6 +49,14 @@ const useStyles = makeStyles(theme => ({
 		},
 	},
 	toolbar: { ...theme.mixins.toolbar, backgroundColor: '3f51b5' },
+	centeredContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		height:'100vh'
+	},
+	toolbar: { ...theme.mixins.toolbar, backgroundColor: '3f51b5' },
 
 	drawerPaper: {
 		width: drawerWidth,
@@ -62,10 +71,17 @@ export default function ResponsiveDrawer(props) {
 	const { container } = props;
 	const classes = useStyles();
 	const theme = useTheme();
+	const [isLoading, setIsLoading] = React.useState(true);
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 	const [FormAccess, setFormAccess] = React.useState(false);
-	const updateFormAccess = async ()=>setFormAccess((await checkFormAccess().data.access));
-	React.useEffect(()=>{updateFormAccess();}, []);
+	const updateFormAccess = async ()=>{
+		setIsLoading(true);
+		setFormAccess(((await checkFormAccess()).data.data.access===true));
+		setIsLoading(false);
+	};
+	React.useEffect(()=>{
+		updateFormAccess();
+	}, []);
 	function handleDrawerToggle() {
 		setMobileOpen(!mobileOpen);
 	}
@@ -84,64 +100,68 @@ export default function ResponsiveDrawer(props) {
 			</List>
 		</div>
 	);
-
-	if (FormAccess)
-		return (
-			<div className={classes.root}>
-				<CssBaseline />
-				<AppBar position="fixed" className={classes.appBar}>
-					<Toolbar>
-						<IconButton
-							color="inherit"
-							aria-label="Open drawer"
-							edge="start"
-							onClick={handleDrawerToggle}
-							className={classes.menuButton}
-						>
-							<MenuIcon />
-						</IconButton>
-						<Typography variant="h6" noWrap className={classes.appHeader}>
-							JITHESHRAJ SCHOLARSHIP APPLICATION PORTAL 2019-2020
-						</Typography>
-					</Toolbar>
-				</AppBar>
-				<nav className={classes.drawer} aria-label="Mailbox folders">
-					{/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-					<Hidden smUp implementation="css">
-						<Drawer
-							container={container}
-							variant="temporary"
-							anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-							open={mobileOpen}
-							onClose={handleDrawerToggle}
-							classes={{
-								paper: classes.drawerPaper,
-							}}
-							ModalProps={{
-								keepMounted: true, // Better open performance on mobile.
-							}}
-						>
-							{drawer}
-						</Drawer>
-					</Hidden>
-					<Hidden xsDown implementation="css">
-						<Drawer
-							classes={{
-								paper: classes.drawerPaper,
-							}}
-							variant="permanent"
-							open
-						>
-							{drawer}
-						</Drawer>
-					</Hidden>
-				</nav>
-				<FormPage></FormPage>
-			</div>
-		);
-	else 
-		return(
-			<EmailVerify isInsti={true} onVerifySuccess={updateFormAccess}></EmailVerify>
-		);
+	if(isLoading){
+		return <Box className={classes.centeredContainer}><CircularProgress size={60}/></Box>;
+	}
+	else{
+		if (FormAccess)
+			return (
+				<div className={classes.root}>
+					<CssBaseline />
+					<AppBar position="fixed" className={classes.appBar}>
+						<Toolbar>
+							<IconButton
+								color="inherit"
+								aria-label="Open drawer"
+								edge="start"
+								onClick={handleDrawerToggle}
+								className={classes.menuButton}
+							>
+								<MenuIcon />
+							</IconButton>
+							<Typography variant="h6" noWrap className={classes.appHeader}>
+								JITHESHRAJ SCHOLARSHIP APPLICATION PORTAL 2019-2020
+							</Typography>
+						</Toolbar>
+					</AppBar>
+					<nav className={classes.drawer} aria-label="Mailbox folders">
+						{/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+						<Hidden smUp implementation="css">
+							<Drawer
+								container={container}
+								variant="temporary"
+								anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+								open={mobileOpen}
+								onClose={handleDrawerToggle}
+								classes={{
+									paper: classes.drawerPaper,
+								}}
+								ModalProps={{
+									keepMounted: true, // Better open performance on mobile.
+								}}
+							>
+								{drawer}
+							</Drawer>
+						</Hidden>
+						<Hidden xsDown implementation="css">
+							<Drawer
+								classes={{
+									paper: classes.drawerPaper,
+								}}
+								variant="permanent"
+								open
+							>
+								{drawer}
+							</Drawer>
+						</Hidden>
+					</nav>
+					<FormPage></FormPage>
+				</div>
+			);
+		else 
+			return(
+				<EmailVerify isInsti={true} onVerifySuccess={updateFormAccess}></EmailVerify>
+			);
+	}
 }
 

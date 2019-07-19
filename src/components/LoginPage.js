@@ -77,7 +77,6 @@ export default function LoginPage(props) {
 			try {
 				const response = await loginSubmit(email, password);
 				if (response.status == 200) {
-					console.log(response.data);
 					setErrorDisplay(false);
 					props.setIsLoggedIn(true);
 					setRedirectToReferrer(true);
