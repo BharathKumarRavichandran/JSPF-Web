@@ -6,18 +6,21 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import InfoIcon from '@material-ui/icons/Info';
+import RateReviewIcon from '@material-ui/icons/RateReview';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import FormPage from './FormPage';
-import { checkFormAccess } from '../utils/api.helper';
+import { checkFormAccess } from '../utils/api/auth.helper';
 import EmailVerify from './EmailVerify';
 import { Box, CircularProgress } from '@material-ui/core';
 
@@ -91,12 +94,26 @@ export default function ResponsiveDrawer(props) {
 			<div className={classes.toolbar} />
 			{/* <Divider /> */}
 			<List>
-				{['Personal Information', 'Certificates and Grade Sheet', 'Project Abstract', 'Essays', 'Review'].map((text, index) => (
-					<ListItem button key={text}>
-						<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-						<ListItemText primary={text} />
-					</ListItem>
-				))}
+				<ListItem button component="a" href='/personal'>
+					<ListItemIcon><InfoIcon/></ListItemIcon>
+					<ListItemText primary={'Personal Information'} />
+				</ListItem>
+				<ListItem button component="a" href='/certificates'>
+					<ListItemIcon><FileCopyIcon/></ListItemIcon>
+					<ListItemText primary={'Certificates'} />
+				</ListItem>
+				<ListItem button component="a" href='/abstract'>
+					<ListItemIcon><MailIcon/></ListItemIcon>
+					<ListItemText primary={'Project Abstract'} />
+				</ListItem>
+				<ListItem button component="a" href='/essays'>
+					<ListItemIcon><AttachFileIcon/></ListItemIcon>
+					<ListItemText primary={'Essays'} />
+				</ListItem>
+				<ListItem button component="a" href='/review'>
+					<ListItemIcon><RateReviewIcon/></ListItemIcon>
+					<ListItemText primary={'Review'} />
+				</ListItem>
 			</List>
 		</div>
 	);

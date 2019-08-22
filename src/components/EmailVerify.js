@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import isEmail from 'validator/lib/isEmail';
-import { sendVerificationCode, checkCode } from '../utils/api.helper';
+import { sendVerificationCode, checkCode } from '../utils/api/auth.helper';
 
 const useStyles = makeStyles(theme => ({
 	'@global': {
@@ -204,3 +206,11 @@ export default function EmailVerify(props) {
 
 	);
 }
+
+EmailVerify.propTypes = {
+	isInsti: PropTypes.bool.isRequired,
+	setEmailVerified: PropTypes.bool.isRequired,
+	setVerificationCode: PropTypes.bool.isRequired,
+	setEmail: PropTypes.bool.isRequired,
+	onVerifySuccess: PropTypes.bool.isRequired
+};

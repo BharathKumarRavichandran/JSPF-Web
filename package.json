@@ -7,7 +7,7 @@
 		"build": "webpack --mode production",
 		"lint": "eslint .; exit 0",
 		"lint:fix": "eslint . --fix",
-		"serve:dev": "webpack --mode development --module-bind js=babel-loader",
+		"serve:dev": "webpack-dev-server --mode development --module-bind js=babel-loader --inline --hot --host 0.0.0.0",
 		"start": "webpack-dev-server --mode development --open --host 0.0.0.0",
 		"watch": "webpack-dev-server --inline --hot"
 	},
@@ -15,7 +15,7 @@
 		"JSPF",
 		"Jitheshraj",
 		"Scholarship",
-		"JS Scholarship"
+		"JR Scholarship"
 	],
 	"author": "Bharath Kumar Ravichandran",
 	"license": "ISC",
@@ -29,6 +29,7 @@
 		"axios": "0.19.0",
 		"react-router": "5.0.1",
 		"react-router-dom": "5.0.1",
+		"react-toastify": "^5.3.2",
 		"validator": "11.1.0"
 	},
 	"devDependencies": {

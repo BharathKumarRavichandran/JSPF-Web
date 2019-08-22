@@ -1,8 +1,19 @@
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
 	devServer: {
-		port: 3000
+		port: 3000,
+		historyApiFallback: true,
+		inline: true,
+		hot: true,
+		contentBase: [path.join(__dirname, 'public'), path.join(__dirname, 'assets')],
+		compress: true,
+	},
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'index_bundle.js',
+		publicPath: '/'
 	},
 	module: {
 		rules: [
@@ -36,11 +47,20 @@ module.exports = {
 	plugins: [
 		new HtmlWebPackPlugin({
 			template: './src/index.html',
-			filename: './index.html'
+			filename: './index.html',
+			inject: 'body'
 		}),
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[id].css'
 		})
-	]
+	],
+	externals: {
+	// global app config object
+		config: JSON.stringify({
+			apiUrl: 'http://localhost:8000/',
+			maintenance: false,
+			env: 'dev'
+		})
+  	}
 };

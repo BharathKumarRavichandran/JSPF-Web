@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function Instructions(props) {
+export default function InstructionsPage(props) {
 	const classes = useStyles();
 	return (
 		<Paper className={classes.paper}>
@@ -48,8 +48,8 @@ export default function Instructions(props) {
 				Be sure to save your application frequently as you proceed to avoid loss of data.
 			</Typography>
 			<Box className={classes.centeredContainer}>
-				<Button variant="contained" color="primary" className={classes.button}>
-					<Link to="/form/personal" className={classes.link}>Next <NavigateNextIcon/></Link>
+				<Button variant='contained' color='primary' className={classes.button}>
+					<Link to='/personal' className={classes.link}>Next <NavigateNextIcon/></Link>
 				</Button>
 			</Box>
 

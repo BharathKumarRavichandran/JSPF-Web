@@ -1,11 +1,16 @@
 import React,{useState,useEffect} from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Form from './Form';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import SignUpPage from './SignUpPage';
 import PrivateRoute from './PrivateRoute';
-import {checkSession as checkSessionHelper} from '../utils/api.helper';
+import {checkSession as checkSessionHelper} from '../utils/api/auth.helper';
 import { CircularProgress, Box } from '@material-ui/core';
 const useStyles = makeStyles(theme => ({
 	centeredContainer: {
@@ -16,6 +21,13 @@ const useStyles = makeStyles(theme => ({
 		height:'100vh'
 	},
 }));
+
+// Add configuration settings for react-toastify
+toast.configure({
+	autoClose: 8000,
+	draggable: false,
+	position: toast.POSITION.BOTTOM_RIGHT
+});
 
 export default function App() {
 	const classes = useStyles();
@@ -48,12 +60,11 @@ export default function App() {
 		return (
 			<BrowserRouter>
 				<div className="App">
-					<Link to="/form">Form</Link>
 					<Switch>
 						<Route path="/login" render={(props) => <LoginPage {...props} setIsLoggedIn={(data) => setIsLoggedIn(data)} />} />
 						{/* <Route path="/login" exact component={LoginPage} setIsLoggedIn={setIsLoggedIn}/> */}
 						<Route path="/signup" exact component={SignUpPage}/>
-						<PrivateRoute path="/form" component={Form} isLoggedIn={isLoggedIn} />
+						<PrivateRoute path="/" component={Form} isLoggedIn={isLoggedIn} />
 					</Switch>
 				</div>
 			</BrowserRouter>

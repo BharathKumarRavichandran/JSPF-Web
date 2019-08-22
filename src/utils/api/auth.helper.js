@@ -1,11 +1,13 @@
-import { serverURL } from '../config';
+import { serverURL } from '../../config';
 import axios, { post, get } from 'axios';
 
 axios.defaults.validateStatus = () => true;
 axios.defaults.withCredentials = true;
+
 const loginSubmit = (email, password) => {
 	return post(`${serverURL}/auth/student/login`, { email, password });
 };
+
 const sendVerificationCode = (email, isInsti) => {
 	return post(`${serverURL}/auth/student/${isInsti ? 'insti-' : ''}email/verification-code/send`, isInsti ? ({ instiEmail: email }) : ({ email }));
 };

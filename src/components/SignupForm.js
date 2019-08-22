@@ -12,7 +12,7 @@ import Container from '@material-ui/core/Container';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import { registerStudent } from '../utils/api.helper';
+import { registerStudent } from '../utils/api/auth.helper';
 import isIn from 'validator/lib/isIn';
 import isInt from 'validator/lib/isInt';
 import isMobilePhone from 'validator/lib/isMobilePhone';

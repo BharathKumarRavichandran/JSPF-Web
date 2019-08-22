@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import AppBar from '@material-ui/core/AppBar';
-import { loginSubmit } from '../utils/api.helper';
+import { loginSubmit } from '../utils/api/auth.helper';
 import isEmail from 'validator/lib/isEmail';
 
 
@@ -152,12 +154,12 @@ export default function LoginPage(props) {
 							onClick={handleSubmit}
 						>
 							Sign In
-    					</Button>
+	  					</Button>
 						<Grid container>
 							<Grid item xs>
 								<Link component={RouterLink} to="#" variant="body2">
 									Forgot password?
-    							</Link>
+								</Link>
 							</Grid>
 							<Grid item>
 								<Link component={RouterLink} to="/signup" variant="body2">
@@ -171,3 +173,8 @@ export default function LoginPage(props) {
 		</div>
 	);
 }
+
+LoginPage.propTypes = {
+	location: PropTypes.object.isRequired,
+	setIsLoggedIn: PropTypes.func.isRequired
+};
