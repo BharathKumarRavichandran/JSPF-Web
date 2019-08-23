@@ -272,6 +272,7 @@ export default function EssaysPage(props) {
 						const uploadResponse = await uploadFinalSOP(sopEssayLocation);
 						if(uploadResponse.data.status_code==200){
 							setSopEssay(true);
+							setSopEssayLocation(uploadResponse.data.data.filePath);
 							toast.success(uploadResponse.data.message);
 						}
 						else{
@@ -293,6 +294,7 @@ export default function EssaysPage(props) {
 						const uploadResponse = await uploadFinalCommunity(communityEssayLocation);
 						if(uploadResponse.data.status_code==200){
 							setCommunityEssay(true);
+							setCommunityEssayLocation(uploadResponse.data.data.filePath);
 							toast.success(uploadResponse.data.message);
 						}
 						else{
@@ -314,6 +316,7 @@ export default function EssaysPage(props) {
 						const uploadResponse = await uploadFinalSociety(societyEssayLocation);
 						if(uploadResponse.data.status_code==200){
 							setSocietyEssay(true);
+							setSocietyEssayLocation(uploadResponse.data.data.filePath);
 							toast.success(uploadResponse.data.message);
 						}
 						else{

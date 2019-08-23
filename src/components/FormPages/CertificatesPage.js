@@ -138,6 +138,7 @@ export default function CertificatesPage(props) {
 						const uploadResponse = await uploadGradeSheetSem1(gradeSheetSem1Location);
 						if(uploadResponse.data.status_code==200){
 							setGradeSheetSem1(true);
+							setGradeSheetSem1(uploadResponse.data.data.filePath);
 							toast.success(uploadResponse.data.message);
 						}
 						else{
@@ -159,6 +160,7 @@ export default function CertificatesPage(props) {
 						const uploadResponse = await uploadInstiCertificate(instiCertificateLocation);
 						if(uploadResponse.data.status_code==200){
 							setInstiCertificate(true);
+							setInstiCertificateLocation(uploadResponse.data.data.filePath);
 							toast.success(uploadResponse.data.message);
 						}
 						else {
@@ -180,6 +182,7 @@ export default function CertificatesPage(props) {
 						const uploadResponse = await uploadNonInstiCertificate(nonInstiCertificateLocation);
 						if(uploadResponse.data.status_code==200){
 							setNonInstiCertificate(true);
+							setNonInstiCertificateLocation(uploadResponse.data.data.filePath);
 							toast.success(uploadResponse.data.message);
 						}
 						else {
@@ -201,6 +204,7 @@ export default function CertificatesPage(props) {
 						const uploadResponse = await uploadGradeSheetMOOC(gradeSheetMOOCLocation);
 						if(uploadResponse.data.status_code==200){
 							setGradeSheetMOOC(true);
+							setGradeSheetMOOCLocation(uploadResponse.data.data.filePath);
 							toast.success(uploadResponse.data.message);
 						}
 						else{

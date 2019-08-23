@@ -153,6 +153,7 @@ export default function AbstractPage(props) {
 				const uploadResponse = await uploadFinalAbstract(abstractLocation);
 				if(uploadResponse.data.status_code==200){
 					setAbstract(true);
+					setAbstractLocation(uploadResponse.data.data.filePath);
 					toast.success(uploadResponse.data.message);
 				}
 				else{
@@ -183,6 +184,7 @@ export default function AbstractPage(props) {
 				const uploadResponse = await uploadSupportingFiles(supportingFilesLocation[0], supportingFilesLocation[1]);
 				if(uploadResponse.data.status_code==200){
 					setSupportingFiles(true);
+					setSupportingFilesLocation(uploadResponse.data.data.filesPath);
 					toast.success(uploadResponse.data.message);
 				}
 				else{
