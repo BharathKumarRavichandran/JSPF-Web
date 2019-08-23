@@ -4,11 +4,12 @@ import axios, { post, get } from 'axios';
 axios.defaults.validateStatus = () => true;
 axios.defaults.withCredentials = true;
 
-const updateInfo = async (introduction, gender, disability, nationality, firstGenStudent, refugee, pronoun) => {
+const updateInfo = async (introduction, gender, disabilityStatus, disabilityDescription, nationality, firstGenStudent, refugee, pronoun) => {
 	return post(`${serverURL}/personal-info/update`, {
 		introduction,
 		gender,
-		disability,
+		disabilityStatus,
+		disabilityDescription,
 		nationality,
 		firstGenStudent,
 		refugee,
