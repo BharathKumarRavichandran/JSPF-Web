@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const dotenvWebpack = require('dotenv-webpack');
+
 module.exports = {
 	devServer: {
 		port: 3000,
@@ -53,8 +55,14 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[id].css'
+		}),
+		new dotenvWebpack({
+			path: __dirname + '/.env'
 		})
 	],
+	node: {
+		fs: 'empty' 
+	},
 	externals: {
 	// global app config object
 		config: JSON.stringify({
