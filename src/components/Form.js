@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -23,6 +26,11 @@ import FormPage from './FormPage';
 import { checkFormAccess } from '../utils/api/auth.helper';
 import EmailVerify from './EmailVerify';
 import { Box, CircularProgress } from '@material-ui/core';
+
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
+// Importing API utils
+import { logout } from '../utils/api/auth.helper';
 
 const drawerWidth = 240;
 
@@ -59,8 +67,6 @@ const useStyles = makeStyles(theme => ({
 		alignItems: 'center',
 		height:'100vh'
 	},
-	toolbar: { ...theme.mixins.toolbar, backgroundColor: '3f51b5' },
-
 	drawerPaper: {
 		width: drawerWidth,
 	},
@@ -74,9 +80,12 @@ export default function ResponsiveDrawer(props) {
 	const { container } = props;
 	const classes = useStyles();
 	const theme = useTheme();
+
+	const [redirectToLogin, setRedirectToLogin] = React.useState(false);
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 	const [FormAccess, setFormAccess] = React.useState(false);
+
 	const updateFormAccess = async ()=>{
 		setIsLoading(true);
 		setFormAccess(((await checkFormAccess()).data.data.access===true));
@@ -89,35 +98,49 @@ export default function ResponsiveDrawer(props) {
 		setMobileOpen(!mobileOpen);
 	}
 
+	const handleLogout = async () => {
+		window.sessionStorage.removeItem('session');
+		await logout();
+		setRedirectToLogin(true);
+	};
+
 	const drawer = (
 		<div>
 			<div className={classes.toolbar} />
 			{/* <Divider /> */}
 			<List>
-				<ListItem button component="a" href='/personal'>
+				<ListItem button component={Link} to='/personal'>
 					<ListItemIcon><InfoIcon/></ListItemIcon>
 					<ListItemText primary={'Personal Information'} />
 				</ListItem>
-				<ListItem button component="a" href='/certificates'>
+				<ListItem button component={Link} to='/certificates'>
 					<ListItemIcon><FileCopyIcon/></ListItemIcon>
 					<ListItemText primary={'Certificates'} />
 				</ListItem>
-				<ListItem button component="a" href='/abstract'>
+				<ListItem button component={Link} to='/abstract'>
 					<ListItemIcon><MailIcon/></ListItemIcon>
 					<ListItemText primary={'Project Abstract'} />
 				</ListItem>
-				<ListItem button component="a" href='/essays'>
+				<ListItem button component={Link} to='/essays'>
 					<ListItemIcon><AttachFileIcon/></ListItemIcon>
 					<ListItemText primary={'Essays'} />
 				</ListItem>
-				<ListItem button component="a" href='/review'>
+				<ListItem button component={Link} to='/review'>
 					<ListItemIcon><RateReviewIcon/></ListItemIcon>
 					<ListItemText primary={'Review'} />
 				</ListItem>
+				<ListItem button component="button" onClick={handleLogout}>
+					<ListItemIcon><ExitToAppIcon/></ListItemIcon>
+					<ListItemText primary={'Logout'} />
+				</ListItem>
+
 			</List>
 		</div>
 	);
-	if(isLoading){
+	if(redirectToLogin){
+		return <Redirect push to={{ pathname: '/login' }} />;
+	}
+	else if(isLoading){
 		return <Box className={classes.centeredContainer}><CircularProgress size={60}/></Box>;
 	}
 	else{
