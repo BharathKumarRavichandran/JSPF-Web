@@ -4,12 +4,12 @@
 	"description": "Frontend for Jitheshraj Scholarship Portal Form.",
 	"main": "index.js",
 	"scripts": {
-		"build": "webpack --mode production",
+		"build": "webpack --config webpack.prod.js --mode production --host 0.0.0.0",
 		"lint": "eslint .; exit 0",
 		"lint:fix": "eslint . --fix",
-		"serve:dev": "webpack-dev-server --mode development --module-bind js=babel-loader --inline --hot --host 0.0.0.0",
-		"start": "webpack-dev-server --mode development --open --host 0.0.0.0",
-		"watch": "webpack-dev-server --inline --hot"
+		"serve:dev": "webpack-dev-server --config webpack.dev.js --mode development --module-bind js=babel-loader --inline --hot --host 0.0.0.0",
+		"start": "webpack-dev-server --config webpack.dev.js --mode development --open --host 0.0.0.0",
+		"watch": "webpack-dev-server --config webpack.dev.js --inline --hot"
 	},
 	"keywords": [
 		"JSPF",
@@ -53,7 +53,7 @@
 		"mini-css-extract-plugin": "^0.7.0",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
-		"webpack": "^4.33.0",
+		"webpack": "^4.39.2",
 		"webpack-cli": "^3.3.4",
 		"webpack-dev-server": "^3.7.1"
 	}

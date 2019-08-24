@@ -2,15 +2,16 @@ version: '3'
 
 services:
 
-  	client:
-		build:
-			context: ./
-			dockerfile: Dockerfile
-		container_name: JSPF-Web
-		volumes:
-		  - ./docker/storage:/usr/src/app/storage
-		  - ./docker/public/uploads:/usr/src/app/public/uploads
-		env_file:
-		- .env
-		ports:
-		- '3000:3000'
+  react_app:
+    build:
+      context: ./
+      dockerfile: ./docker/build_files/Dockerfile
+    container_name: jspf-web
+    restart: always
+    volumes:
+      - ./docker/storage:/usr/src/app/storage
+      - ./docker/public/uploads:/usr/src/app/public/uploads
+    env_file:
+    - .env
+    ports:
+    - '3000:3000'

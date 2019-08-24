@@ -37,17 +37,11 @@ toast.configure({
 
 export default function App() {
 	const classes = useStyles();
+
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const [session, setSession] = useState(window.sessionStorage.getItem('session'));
-	useEffect(() => {
-		if(session){
-			checkSession(session);
-		}else{
-			setIsLoading(false);
-		}
-	}, []);
-	
+
 	const checkSession = async (session) =>{
 		if((await checkSessionHelper(session)).data.data.isLoggedIn==true){
 			setIsLoggedIn(true);
@@ -59,6 +53,14 @@ export default function App() {
 			setIsLoading(false);
 		}
 	};
+
+	useEffect(() => {
+		if(session){
+			checkSession(session);
+		}else{
+			setIsLoading(false);
+		}
+	}, []);
 
 	if (isLoading) {
 		return <Box className={classes.centeredContainer}><CircularProgress size={80}/></Box>;
