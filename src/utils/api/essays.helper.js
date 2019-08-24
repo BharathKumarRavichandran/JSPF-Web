@@ -12,16 +12,16 @@ const config = {
 	}
 };
 
-const sendSOPToMentors = async (docLink) => {
-	return post(`${serverURL}/essays/mentors/sop/send`,{ docLink });
+const sendSOPToMentors = async (sopLink) => {
+	return post(`${serverURL}/essays/mentors/sop/send`,{ sopLink });
 };
 
-const sendCommunityToMentors = async (docLink) => {
-	return post(`${serverURL}/essays/mentors/community/send`,{ docLink });
+const sendCommunityToMentors = async (communityLink) => {
+	return post(`${serverURL}/essays/mentors/community/send`,{ communityLink });
 };
 
-const sendSocietyToMentors = async (docLink) => {
-	return post(`${serverURL}/essays/mentors/society/send`,{ docLink });
+const sendSocietyToMentors = async (societyLink) => {
+	return post(`${serverURL}/essays/mentors/society/send`,{ societyLink });
 };
 
 const uploadFinalSOP = async (file) => {
