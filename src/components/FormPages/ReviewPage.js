@@ -1,9 +1,12 @@
+/* eslint-disable indent */
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
-import { CircularProgress, Paper, Box} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { CircularProgress, Paper, Box, Slide, useMediaQuery } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -12,6 +15,11 @@ import Typography from '@material-ui/core/Typography';
 
 // Importing API utils
 import { getAllPendingRequirements, updateSignature, getSignature, viewForm, submitForm } from '../../utils/api/review.helper';
+
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+	return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const useStyles = makeStyles(theme => ({
 	uppercase: {
@@ -66,9 +74,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function ReviewPage(props) {
 	const classes = useStyles();
+	const theme = useTheme();
+	const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+	const [redirectToApplication, setRedirectToApplication] = useState(false);
 	const [isLoading1, setIsLoading1] = useState(true);
 	const [isLoading2, setIsLoading2] = useState(true);
+	const [openDialog, setOpenDialog] = useState(false);
+	const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
 	
 	const [requirements, setRequirements] = useState(null);
 	const [signature, setSignature] = useState('');
@@ -136,40 +149,64 @@ export default function ReviewPage(props) {
 
 	const handleFormView = async () => {
 		try {
+			// Add loader before API request
+			setIsGeneratingPDF(true);
+
 			const response = await viewForm();
-			// TODO: Add loading modal
+
+			// Remove loader after API request
+			setIsGeneratingPDF(false);
+
 			if(response.data.status_code==200){
-				//response.data.data.applicationFilePath;
+				// Open generated summary of the application in new tab
+				window.open(response.data.data.applicationFilePath, '_blank');
 			}
 			else{
+				setOpenDialog(false);
 				toast.error(response.data.message);
 			}
 		} catch (error) {
+			setOpenDialog(false);
 			toast.error(error.toString());
 		}
 	};	
 
 	const handleFormSubmit = async () => {
-		try {
-			const response1 = await handleSignatureSave();
+		setOpenDialog(true);
+	};
 
-			// TODO: Add confirmation modal
-			if(response1.data.status_code==200){
-				const response2 = await submitForm();
-				if(response2.data.status_code==200){
-					// TODO: do something
+	const confirmSubmit = async () => {
+		try {
+			if(signature){
+				const response1 = await updateSignature(signature);
+
+				if(response1.data.status_code==200){
+					const response2 = await submitForm();
+					if(response2.data.status_code==200){
+						// redirect to /application
+						setRedirectToApplication(true);
+					}
+					else{
+						setOpenDialog(false);
+						toast.error(response2.data.message);
+					}
 				}
 				else{
-					toast.error(response2.data.message);
+					setOpenDialog(false);
+					toast.error(response1.data.message);
 				}
-			}
-			else{
-				toast.error(response1.data.message);
+			} else {
+				setSignatureError(true);
 			}
 		} catch (error) {
+			setOpenDialog(false);
 			toast.error(error.toString());
 		}
 	};
+
+	const handleDialogClose = async () => {
+		setOpenDialog(false);
+	}
 
 	useEffect( () => {
 		async function fetchAPI() {
@@ -183,9 +220,13 @@ export default function ReviewPage(props) {
 		fetchAPI();
 	}, []);
 
-	if (isLoading1 || isLoading2) {
+	if(redirectToApplication){
+		return <Redirect push to={{ pathname: '/application' }} />;
+	}
+	else if (isLoading1 || isLoading2) {
 		return <Box className={classes.centeredContainer}><CircularProgress size={80}/></Box>;
-	} else {
+	}
+	else {
 		return (
 			<Paper className={classes.paper}>
 				<Typography variant="h3" className={classes.heading} gutterBottom>Review</Typography>
@@ -341,6 +382,39 @@ export default function ReviewPage(props) {
 						Submit
 					</Button>
 				</Box>
+				<Dialog
+					open={openDialog}
+					fullScreen={fullScreen}
+					TransitionComponent={Transition}
+					keepMounted
+					onClose={handleDialogClose}
+					aria-labelledby="alert-dialog-slide-title"
+					aria-describedby="alert-dialog-slide-description"
+				>
+					<DialogTitle id="alert-dialog-slide-title">{'Are you sure you want to submit your application?'}</DialogTitle>
+					<DialogContent>
+						{
+							isGeneratingPDF ?
+							(
+								<Box className={classes.centeredContainer}><CircularProgress size={80}/></Box>
+							):(null)
+						}
+						<DialogContentText id="alert-dialog-slide-description">
+							It is always better to check before submitting your application. Application once submitted cannot be changed. Check whether you have filled/uploaded everything correctly.
+						</DialogContentText>
+					</DialogContent>
+					<DialogActions>
+						<Button onClick={handleFormView} color="secondary" disabled={isGeneratingPDF}>
+							View Application
+						</Button>
+						<Button onClick={confirmSubmit} color="primary" disabled={isGeneratingPDF}>
+							Submit
+						</Button>
+						<Button onClick={handleDialogClose} color="default" disabled={isGeneratingPDF}>
+							Close
+						</Button>
+					</DialogActions>
+				</Dialog>
 			</Paper>
 		);
 	}
