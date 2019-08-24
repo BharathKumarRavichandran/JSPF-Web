@@ -13,7 +13,8 @@ module.exports = {
 		START_YEAR: process.env.START_YEAR,
 		END_YEAR: process.env.END_YEAR
 	},
-	debug: process.env.debug,
+	debug: process.env.DEBUG,
+	maintenance: process.env.MAINTENANCE,
 	directory: {
 		BASE_DIR: BASE_DIR,
 		CONFIG_DIR: path.join(BASE_DIR, 'src', 'config'),

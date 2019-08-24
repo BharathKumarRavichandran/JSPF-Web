@@ -45,7 +45,7 @@ body {
 	display: inline-block;
 	width: 180px;
 	height: 155px;
-	background-image: url('/maintenanceBeer.png');
+	background-image: url('/assets/images/maintenance.jpg');
 	background-size: cover;
 	-webkit-transform: scale(1.4);
 	-ms-transform: scale(1.4);

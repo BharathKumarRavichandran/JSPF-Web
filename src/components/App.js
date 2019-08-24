@@ -15,6 +15,9 @@ import { CircularProgress, Box } from '@material-ui/core';
 
 import './css/maintenancePage.css';
 
+// Importing config
+import { maintenance } from '../config/config';
+
 const useStyles = makeStyles(theme => ({
 	centeredContainer: {
 		display: 'flex',
@@ -64,7 +67,7 @@ export default function App() {
 			<BrowserRouter>
 				<div className="App">
 					{
-						false ? (
+						!maintenance ? (
 							<Switch>
 								<Route path="/login" render={(props) => <LoginPage {...props} setIsLoggedIn={(data) => setIsLoggedIn(data)} />} />
 								{/* <Route path="/login" exact component={LoginPage} setIsLoggedIn={setIsLoggedIn}/> */}
