@@ -1,4 +1,4 @@
-import { serverURL } from '../../config';
+import { url } from '../../config/config';
 import axios, { post, get } from 'axios';
 
 axios.defaults.validateStatus = () => true;
@@ -10,6 +10,8 @@ const config = {
 		'content-type': 'multipart/form-data'
 	}
 };
+
+const serverURL = url.API_BASE_URL;
 
 const sendDocLink = async (docLink) => {
 	return post(`${serverURL}/abstract/mentors/send`, { docLink });
