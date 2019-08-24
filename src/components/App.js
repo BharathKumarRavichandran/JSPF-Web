@@ -12,6 +12,9 @@ import SignUpPage from './SignUpPage';
 import PrivateRoute from './PrivateRoute';
 import {checkSession as checkSessionHelper} from '../utils/api/auth.helper';
 import { CircularProgress, Box } from '@material-ui/core';
+
+import './css/maintenancePage.css';
+
 const useStyles = makeStyles(theme => ({
 	centeredContainer: {
 		display: 'flex',
@@ -60,12 +63,30 @@ export default function App() {
 		return (
 			<BrowserRouter>
 				<div className="App">
-					<Switch>
-						<Route path="/login" render={(props) => <LoginPage {...props} setIsLoggedIn={(data) => setIsLoggedIn(data)} />} />
-						{/* <Route path="/login" exact component={LoginPage} setIsLoggedIn={setIsLoggedIn}/> */}
-						<Route path="/signup" exact component={SignUpPage}/>
-						<PrivateRoute path="/" component={Form} isLoggedIn={isLoggedIn} />
-					</Switch>
+					{
+						false ? (
+							<Switch>
+								<Route path="/login" render={(props) => <LoginPage {...props} setIsLoggedIn={(data) => setIsLoggedIn(data)} />} />
+								{/* <Route path="/login" exact component={LoginPage} setIsLoggedIn={setIsLoggedIn}/> */}
+								<Route path="/signup" exact component={SignUpPage}/>
+								<PrivateRoute path="/" component={Form} isLoggedIn={isLoggedIn} />
+							</Switch>
+						) : (
+							<Switch>
+								<Route render={() => (
+									<div id="maintenance">
+										<div className="maintenance">
+											<div className="maintenance-image">
+												<span></span>
+											</div>
+											<h2>Oops! We are under maintenance</h2>
+											<p>Sorry, we are trying our best to fix the issues! Come back soon!</p>
+										</div>
+									</div>
+								)}/>
+							</Switch>
+						)
+					}
 				</div>
 			</BrowserRouter>
 		);

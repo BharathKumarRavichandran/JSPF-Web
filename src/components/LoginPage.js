@@ -100,7 +100,7 @@ export default function LoginPage(props) {
 		if (props.location.state && props.location.state.from)
 			return <Redirect push to={props.location.state.from} />;
 		else
-			return <Redirect push to={{ pathname: '/form' }} />;
+			return <Redirect push to={{ pathname: '/' }} />;
 	}
 
 	return (
