@@ -31,11 +31,16 @@ const checkFormAccess = async () => {
 	return get(`${serverURL}/form/access`);
 };
 
+const logout = async () => {
+	return post(`${serverURL}/auth/student/logout`);
+};
+
 export {
 	loginSubmit,
 	sendVerificationCode,
 	checkCode,
 	registerStudent,
 	checkFormAccess,
-	checkSession
+	checkSession,
+	logout
 };
