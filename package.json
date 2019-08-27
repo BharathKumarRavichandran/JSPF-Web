@@ -4,7 +4,7 @@
 	"description": "Frontend for Jitheshraj Scholarship Portal Form.",
 	"main": "index.js",
 	"scripts": {
-		"build": "webpack --config webpack.prod.js --mode production --host 0.0.0.0",
+		"build": "webpack --config webpack.prod.js --mode production",
 		"lint": "eslint .; exit 0",
 		"lint:fix": "eslint . --fix",
 		"serve:dev": "webpack-dev-server --config webpack.dev.js --mode development --module-bind js=babel-loader --inline --hot --host 0.0.0.0",
@@ -27,13 +27,16 @@
 		"@material-ui/core": "4.2.0",
 		"@material-ui/icons": "4.2.1",
 		"axios": "0.19.0",
+		"compression-webpack-plugin": "^3.0.0",
 		"dotenv": "^8.1.0",
 		"dotenv-webpack": "^1.7.0",
+		"express": "^4.17.1",
 		"fs": "0.0.1-security",
 		"path": "^0.12.7",
 		"react-router": "5.0.1",
 		"react-router-dom": "5.0.1",
 		"react-toastify": "^5.3.2",
+		"uglifyjs-webpack-plugin": "^2.2.0",
 		"validator": "11.1.0"
 	},
 	"devDependencies": {
@@ -54,7 +57,7 @@
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"webpack": "^4.39.2",
-		"webpack-cli": "^3.3.4",
+		"webpack-cli": "^3.3.7",
 		"webpack-dev-server": "^3.7.1"
 	}
 }
