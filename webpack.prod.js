@@ -3,11 +3,23 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const dotenvWebpack = require('dotenv-webpack');
 
+// Import output bundle compress plugins
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+
 module.exports = {
+	entry: path.resolve(__dirname, 'src','index.js'),
+	mode: 'production',
 	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'main.js',
+		path: path.resolve(__dirname, 'build'),
+		filename: 'bundle.js',
 		publicPath: '/'
+	},
+	optimization: {
+		minimize: true,
+		minimizer: [new UglifyJsPlugin({
+			include: /\.min\.js$/
+		})]
 	},
 	module: {
 		rules: [
@@ -17,11 +29,6 @@ module.exports = {
 				use: {
 					loader: 'babel-loader'
 				}
-			},
-			{
-				test: /\.(js|jsx)$/,
-				exclude: /node_modules/,
-				use: ['eslint-loader','babel-loader']
 			},
 			{
 				test: /\.html$/,
@@ -40,8 +47,8 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebPackPlugin({
-			template: './src/index.html',
-			filename: './index.html',
+			template: path.resolve(__dirname, 'src', 'index.html'),
+			filename: path.resolve(__dirname, 'build', 'index.html'),
 			inject: 'body'
 		}),
 		new MiniCssExtractPlugin({
@@ -50,7 +57,8 @@ module.exports = {
 		}),
 		new dotenvWebpack({
 			path: __dirname + '/.env'
-		})
+		}),
+		new CompressionPlugin()
 	],
 	node: {
 		fs: 'empty' 
