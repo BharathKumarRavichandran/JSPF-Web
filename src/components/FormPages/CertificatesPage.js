@@ -48,12 +48,16 @@ export default function CertificatesPage(props) {
 	const [isLoading, setIsLoading] = useState(true);
 
 	const [gradeSheetSem1, setGradeSheetSem1] = useState(false);
+	const [gradeSheetSem1Preview, setGradeSheetSem1Preview] = useState(null);
 	const [gradeSheetSem1Location, setGradeSheetSem1Location] = useState(null);
 	const [instiCertificate, setInstiCertificate] = useState(false);
+	const [instiCertificatePreview, setInstiCertificatePreview] = useState(null);
 	const [instiCertificateLocation, setInstiCertificateLocation] = useState(null);
 	const [nonInstiCertificate, setNonInstiCertificate] = useState(false);
+	const [nonInstiCertificatePreview, setNonInstiCertificatePreview] = useState(null);
 	const [nonInstiCertificateLocation, setNonInstiCertificateLocation] = useState(null);
 	const [gradeSheetMOOC, setGradeSheetMOOC] = useState(false);
+	const [gradeSheetMOOCPreview, setGradeSheetMOOCPreview] = useState(null);
 	const [gradeSheetMOOCLocation, setGradeSheetMOOCLocation] = useState(null);
 
 	const getAllCertificates = async () => {
@@ -95,6 +99,7 @@ export default function CertificatesPage(props) {
 			case 'gradeSheetSem1':
 				if(!gradeSheetSem1){
 					setGradeSheetSem1Location(e.target.files[0]);
+					setGradeSheetSem1Preview(URL.createObjectURL(e.target.files[0]));
 				}
 				else{
 					toast.error('File already uploaded.');
@@ -104,6 +109,7 @@ export default function CertificatesPage(props) {
 			case 'instiCertificate':
 				if(!instiCertificate){
 					setInstiCertificateLocation(e.target.files[0]);
+					setInstiCertificatePreview(URL.createObjectURL(e.target.files[0]));
 				}
 				else{
 					toast.error('File already uploaded.');
@@ -113,6 +119,7 @@ export default function CertificatesPage(props) {
 			case 'nonInstiCertificate':
 				if(!nonInstiCertificate){
 					setNonInstiCertificateLocation(e.target.files[0]);
+					setNonInstiCertificatePreview(URL.createObjectURL(e.target.files[0]));
 				}
 				else{
 					toast.error('File already uploaded.');
@@ -122,6 +129,7 @@ export default function CertificatesPage(props) {
 			case 'gradeSheetMOOC':
 				if(!gradeSheetMOOC){
 					setGradeSheetMOOCLocation(e.target.files[0]);
+					setGradeSheetMOOCPreview(URL.createObjectURL(e.target.files[0]));
 				}
 				else{
 					toast.error('File already uploaded.');
@@ -262,7 +270,10 @@ export default function CertificatesPage(props) {
 											style={{ display: 'none' }}
 										/>
 									</Button>
-									<Button variant="contained" color="secondary" className={classes.button}>
+									<Button variant="contained" color="secondary" className={classes.button}
+										target='_blank'
+										href={gradeSheetSem1Preview}
+									>
 										Preview
 									</Button>
 									<Button
@@ -313,7 +324,10 @@ export default function CertificatesPage(props) {
 											style={{ display: 'none' }}
 										/>
 									</Button>
-									<Button variant="contained" color="secondary" className={classes.button}>
+									<Button variant="contained" color="secondary" className={classes.button}
+										target='_blank'
+										href={instiCertificatePreview}
+									>
 										Preview
 									</Button>
 									<Button
@@ -359,7 +373,10 @@ export default function CertificatesPage(props) {
 											style={{ display: 'none' }}
 										/>
 									</Button>
-									<Button variant="contained" color="secondary" className={classes.button}>
+									<Button variant="contained" color="secondary" className={classes.button}
+										target='_blank'
+										href={nonInstiCertificatePreview}
+									>
 										Preview
 									</Button>
 									<Button
@@ -405,7 +422,10 @@ export default function CertificatesPage(props) {
 											style={{ display: 'none' }}
 										/>
 									</Button>
-									<Button variant="contained" color="secondary" className={classes.button}>
+									<Button variant="contained" color="secondary" className={classes.button}
+										target='_blank'
+										href={gradeSheetMOOCPreview}
+									>
 									Preview
 									</Button>
 									<Button
