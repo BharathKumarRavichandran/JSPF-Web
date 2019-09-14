@@ -74,7 +74,9 @@ export default function AbstractPage(props) {
 	const [docLinkURL, setDocLinkURL] = useState(null);
 	const [abstract, setAbstract] = useState(null);
 	const [abstractLocation, setAbstractLocation] = useState(null);
+	const [abstractPreview, setAbstractPreview] = useState(null);
 	const [supportingFiles, setSupportingFiles] = useState(null);
+	const [supportingFilesPreview, setSupportingFilesPreview] = useState([null, null]);
 	const [supportingFilesLocation, setSupportingFilesLocation] = useState([null, null]);
 
 	const getAllAbstract = async () => {
@@ -141,6 +143,7 @@ export default function AbstractPage(props) {
 	const handleAbstractChange = async (e) => {
 		if(!abstract){
 			setAbstractLocation(e.target.files[0]);
+			setAbstractPreview(URL.createObjectURL(e.target.files[0]));
 		}
 		else{
 			toast.error('File already uploaded.');
@@ -171,10 +174,25 @@ export default function AbstractPage(props) {
 
 	const handleSupportingFilesChange = async (e) => {
 		if(!supportingFiles){
-			setSupportingFilesLocation([e.target.files[0], e.target.files[1]]);
+			if(e.target.files[1]){
+				setSupportingFilesLocation([e.target.files[0], e.target.files[1]]);
+				setSupportingFilesPreview([URL.createObjectURL(e.target.files[0]), URL.createObjectURL(e.target.files[1])]);
+			} else {
+				setSupportingFilesLocation([e.target.files[0], null]);
+				setSupportingFilesPreview([URL.createObjectURL(e.target.files[0]), null]);
+			}
 		}
 		else{
 			toast.error('File already uploaded.');
+		}
+	};
+
+	const handleSupportingFilesPreview = async () => {
+		if(supportingFilesPreview[0]){
+			window.open(supportingFilesPreview[0]);
+		}
+		if(supportingFilesPreview[1]){
+			window.open(supportingFilesPreview[1]);
 		}
 	};
 
@@ -319,7 +337,10 @@ export default function AbstractPage(props) {
 												style={{ display: 'none' }}
 											/>
 										</Button>
-										<Button variant='contained' color='secondary' className={classes.button}>
+										<Button variant='contained' color='secondary' className={classes.button}
+											target='_blank'
+											href={abstractPreview}
+										>
 											Preview
 										</Button>
 										<Button
@@ -365,7 +386,9 @@ export default function AbstractPage(props) {
 												onChange={handleSupportingFilesChange}
 											/>
 										</Button>
-										<Button variant='contained' color='secondary' className={classes.button}>
+										<Button variant='contained' color='secondary' className={classes.button}
+											onClick={handleSupportingFilesPreview}
+										>
 										Preview
 										</Button>
 										<Button
