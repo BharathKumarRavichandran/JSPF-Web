@@ -138,7 +138,7 @@ export default function CertificatesPage(props) {
 						const uploadResponse = await uploadGradeSheetSem1(gradeSheetSem1Location);
 						if(uploadResponse.data.status_code==200){
 							setGradeSheetSem1(true);
-							setGradeSheetSem1(uploadResponse.data.data.filePath);
+							setGradeSheetSem1Location(uploadResponse.data.data.filePath);
 							toast.success(uploadResponse.data.message);
 						}
 						else{
