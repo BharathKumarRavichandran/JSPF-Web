@@ -82,10 +82,13 @@ export default function EssaysPage(props) {
 	const [societyMentorURL, setSocietyMentorURL] = useState('');
 	
 	const [sopEssay, setSopEssay] = useState(false);
+	const [sopEssayPreview, setSopEssayPreview] = useState(null);
 	const [sopEssayLocation, setSopEssayLocation] = useState(null);
 	const [communityEssay, setCommunityEssay] = useState(false);
+	const [communityEssayPreview, setCommunityEssayPreview] = useState(null);
 	const [communityEssayLocation, setCommunityEssayLocation] = useState(null);
 	const [societyEssay, setSocietyEssay] = useState(false);
+	const [societyEssayPreview, setSocietyEssayPreview] = useState(null);
 	const [societyEssayLocation, setSocietyEssayLocation] = useState(null);
 
 	const getAllEssays = async () => {
@@ -239,24 +242,30 @@ export default function EssaysPage(props) {
 	const handleFileChange = async (e, field) => {
 		switch(field) {
 			case 'sop':
-				if(!sopEssay)
+				if(!sopEssay){
 					setSopEssayLocation(e.target.files[0]);
+					setSopEssayPreview(URL.createObjectURL(e.target.files[0]));
+				}
 				else{
 					toast.error('File already uploaded.');
 				}
 				break;
 
 			case 'community':
-				if(!communityEssay)
+				if(!communityEssay){
 					setCommunityEssayLocation(e.target.files[0]);
+					setCommunityEssayPreview(URL.createObjectURL(e.target.files[0]));
+				}
 				else{
 					toast.error('File already uploaded.');
 				}
 				break;
 
 			case 'society':
-				if(!societyEssay)
+				if(!societyEssay){
 					setSocietyEssayLocation(e.target.files[0]);
+					setSocietyEssayPreview(URL.createObjectURL(e.target.files[0]));
+				}
 				else{
 					toast.error('File already uploaded.');
 				}
@@ -543,7 +552,10 @@ export default function EssaysPage(props) {
 													style={{ display: 'none' }}
 												/>
 											</Button>
-											<Button variant="contained" color="secondary" className={classes.button}>
+											<Button variant="contained" color="secondary" className={classes.button}
+												target='_blank'
+												href={sopEssayPreview}
+											>
 											Preview
 											</Button>
 											<Button
@@ -589,7 +601,10 @@ export default function EssaysPage(props) {
 													style={{ display: 'none' }}
 												/>
 											</Button>
-											<Button variant="contained" color="secondary" className={classes.button}>
+											<Button variant="contained" color="secondary" className={classes.button}
+												target='_blank'
+												href={communityEssayPreview}
+											>
 											Preview
 											</Button>
 											<Button
@@ -635,7 +650,10 @@ export default function EssaysPage(props) {
 													style={{ display: 'none' }}
 												/>
 											</Button>
-											<Button variant="contained" color="secondary" className={classes.button}>
+											<Button variant="contained" color="secondary" className={classes.button}
+												target='_blank'
+												href={societyEssayPreview}
+											>
 											Preview
 											</Button>
 											<Button
