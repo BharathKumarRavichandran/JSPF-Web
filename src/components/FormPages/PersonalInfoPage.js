@@ -87,7 +87,10 @@ export default function PersonalInfoPage(props) {
 				}
 				setDisabilityStatus(personalInfo.disability.status);
 				setDisabilityDescription(personalInfo.disability.description);
-				setNationality(personalInfo.nationality);
+				if(personalInfo.nationality)
+					setNationality(personalInfo.nationality);
+				else
+					setNationality('Indian');
 				setFirstGenStudent(personalInfo.firstGenStudent);
 				setRefugee(personalInfo.refugee);
 				setPronoun(personalInfo.pronoun);
@@ -298,7 +301,7 @@ export default function PersonalInfoPage(props) {
 						select
 						label="Nationality"
 						className={classes.textField}
-						value={nationality?nationality:'Indian'}
+						value={nationality}
 						error={nationalityError}
 						onChange={ (e) => { handleInputChange(e,'nationality'); } }
 						SelectProps={{
