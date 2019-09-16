@@ -136,7 +136,7 @@ export default withRouter(function SignUpForm(props) {
 				if (res.status === 400) {
 					setErrorDisplay(res.data.message);
 				} else if (res.status == 200) {
-					props.history.push('/form');
+					props.history.push('/');
 				}
 			} catch (error) {
 				setErrorDisplay(`Something went wrong. Error : ${error}`);
