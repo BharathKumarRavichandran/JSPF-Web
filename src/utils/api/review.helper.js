@@ -22,19 +22,9 @@ const getSignature = async () => {
 	return get(`${serverURL}/signature/get`);
 };
 
-const viewForm = () => {
-	return post(`${serverURL}/form/view`);
-};
-
-const submitForm = () => {
-	return post(`${serverURL}/form/submit`);
-};
-
 export {
 	getAllPendingRequirements,
 	getNecessaryPendingRequirements,
 	updateSignature,
-	getSignature,
-	viewForm,
-	submitForm
+	getSignature
 };

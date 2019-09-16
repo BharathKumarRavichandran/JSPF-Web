@@ -14,7 +14,8 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 // Importing API utils
-import { getAllPendingRequirements, updateSignature, getSignature, viewForm, submitForm } from '../../utils/api/review.helper';
+import { getAllPendingRequirements, updateSignature, getSignature } from '../../utils/api/review.helper';
+import { generateForm, submitForm } from '../../utils/api/form.helper';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -152,7 +153,7 @@ export default function ReviewPage(props) {
 			// Add loader before API request
 			setIsGeneratingPDF(true);
 
-			const response = await viewForm();
+			const response = await generateForm();
 
 			// Remove loader after API request
 			setIsGeneratingPDF(false);
