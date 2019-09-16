@@ -92,7 +92,7 @@ export default function FormLayout(props) {
 		setRedirectToLogin(true);
 	};
 
-	const drawer = (
+	const drawer1 = (
 		<div>
 			<div className={classes.toolbar} />
 			{/* <Divider /> */}
@@ -125,11 +125,37 @@ export default function FormLayout(props) {
 					<ListItemIcon><ExitToAppIcon/></ListItemIcon>
 					<ListItemText primary={'Logout'} />
 				</ListItem>
-
 			</List>
 		</div>
 	);
-    
+	
+	const drawer2 = (
+		<div>
+			<div className={classes.toolbar} />
+			{/* <Divider /> */}
+			<List>
+				<ListItem button component={Link} to='/application'>
+					<ListItemIcon><InfoIcon/></ListItemIcon>
+					<ListItemText primary={'Application'} />
+				</ListItem>
+				<ListItem button component="button" onClick={handleLogout}>
+					<ListItemIcon><ExitToAppIcon/></ListItemIcon>
+					<ListItemText primary={'Logout'} />
+				</ListItem>
+			</List>
+		</div>
+	);
+
+	const drawer = (
+		(props.submissionStatus) ? (
+			// Render drawer2 if form is submitted
+			drawer2
+		) : (
+			// Render drawer1 if form is submitted
+			drawer1
+		)
+	);
+
 	if(redirectToLogin){
 		return <Redirect push to={{ pathname: '/login' }} />;
 	}

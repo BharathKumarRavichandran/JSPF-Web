@@ -14,6 +14,7 @@ export default function Form() {
 				<Route exact path='/abstract' component={FormPage}/>
 				<Route exact path='/essays' component={FormPage}/>
 				<Route exact path='/review' component={FormPage}/>
+				<Route exact path='/application' component={FormPage}/>
 				<Route render={ () => (
 					<div id="notfound">
 						<div className="notfound">

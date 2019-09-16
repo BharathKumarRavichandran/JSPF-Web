@@ -222,7 +222,7 @@ export default function ReviewPage(props) {
 	}, []);
 
 	if(redirectToApplication){
-		return <Redirect push to={{ pathname: '/application' }} />;
+		return <Redirect push to={{ pathname: '/application', state: { from: '/review' } }} />;
 	}
 	else if (isLoading1 || isLoading2) {
 		return <Box className={classes.centeredContainer}><CircularProgress size={80}/></Box>;
