@@ -21,6 +21,7 @@ app.get('*.css', function (req, res, next) {
 });
 
 app.use(express.static(__dirname + '/build'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('*', function (req, res) {
 	res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
