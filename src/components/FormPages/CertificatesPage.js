@@ -94,12 +94,31 @@ export default function CertificatesPage(props) {
 		}
 	};
 
+	const validateFile = async (file) => {
+		const allowedFileTypesRE = /jpeg|jpg|png/;
+		// File size limit: 1 MB
+		if(file.size > 1000000){
+			toast.error('File size should be less than 1MB.');
+			return false;
+		}
+		else if(!allowedFileTypesRE.test(file.type)){
+			toast.error('File type should be in jpg, jpeg or png format.');
+			return false;
+		}
+		return true;
+	};
+
 	const handleFileChange = async (e, field) => {
 		switch(field) {
 			case 'gradeSheetSem1':
 				if(!gradeSheetSem1){
-					setGradeSheetSem1Location(e.target.files[0]);
-					setGradeSheetSem1Preview(URL.createObjectURL(e.target.files[0]));
+					if(await validateFile(e.target.files[0])){
+						setGradeSheetSem1Location(e.target.files[0]);
+						setGradeSheetSem1Preview(URL.createObjectURL(e.target.files[0]));
+					} else {
+						setGradeSheetSem1Location(null);
+						setGradeSheetSem1Preview(null);
+					}
 				}
 				else{
 					toast.error('File already uploaded.');
@@ -108,8 +127,13 @@ export default function CertificatesPage(props) {
 
 			case 'instiCertificate':
 				if(!instiCertificate){
-					setInstiCertificateLocation(e.target.files[0]);
-					setInstiCertificatePreview(URL.createObjectURL(e.target.files[0]));
+					if(await validateFile(e.target.files[0])){
+						setInstiCertificateLocation(e.target.files[0]);
+						setInstiCertificatePreview(URL.createObjectURL(e.target.files[0]));
+					} else {
+						setInstiCertificateLocation(null);
+						setInstiCertificatePreview(null);
+					}
 				}
 				else{
 					toast.error('File already uploaded.');
@@ -118,8 +142,13 @@ export default function CertificatesPage(props) {
 
 			case 'nonInstiCertificate':
 				if(!nonInstiCertificate){
-					setNonInstiCertificateLocation(e.target.files[0]);
-					setNonInstiCertificatePreview(URL.createObjectURL(e.target.files[0]));
+					if(await validateFile(e.target.files[0])){
+						setNonInstiCertificateLocation(e.target.files[0]);
+						setNonInstiCertificatePreview(URL.createObjectURL(e.target.files[0]));
+					} else {
+						setNonInstiCertificateLocation(null);
+						setNonInstiCertificatePreview(null);
+					}
 				}
 				else{
 					toast.error('File already uploaded.');
@@ -128,8 +157,13 @@ export default function CertificatesPage(props) {
 
 			case 'gradeSheetMOOC':
 				if(!gradeSheetMOOC){
-					setGradeSheetMOOCLocation(e.target.files[0]);
-					setGradeSheetMOOCPreview(URL.createObjectURL(e.target.files[0]));
+					if(await validateFile(e.target.files[0])){
+						setGradeSheetMOOCLocation(e.target.files[0]);
+						setGradeSheetMOOCPreview(URL.createObjectURL(e.target.files[0]));
+					} else {
+						setGradeSheetMOOCLocation(null);
+						setGradeSheetMOOCPreview(null);
+					}
 				}
 				else{
 					toast.error('File already uploaded.');

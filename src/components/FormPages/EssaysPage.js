@@ -239,12 +239,31 @@ export default function EssaysPage(props) {
 		}
 	};
 
+	const validateFile = async (file) => {
+		const allowedFileTypesRE = /pdf/;
+		// File size limit: 3 MB
+		if(file.size > 3000000){
+			toast.error('File size should be less than 3 MB.');
+			return false;
+		}
+		else if(!allowedFileTypesRE.test(file.type)){
+			toast.error('File type should be in pdf format.');
+			return false;
+		}
+		return true;
+	};
+
 	const handleFileChange = async (e, field) => {
 		switch(field) {
 			case 'sop':
 				if(!sopEssay){
-					setSopEssayLocation(e.target.files[0]);
-					setSopEssayPreview(URL.createObjectURL(e.target.files[0]));
+					if(await validateFile(e.target.files[0])){
+						setSopEssayLocation(e.target.files[0]);
+						setSopEssayPreview(URL.createObjectURL(e.target.files[0]));
+					} else {
+						setSopEssayLocation(null);
+						setSopEssayPreview(null);
+					}
 				}
 				else{
 					toast.error('File already uploaded.');
@@ -253,8 +272,13 @@ export default function EssaysPage(props) {
 
 			case 'community':
 				if(!communityEssay){
-					setCommunityEssayLocation(e.target.files[0]);
-					setCommunityEssayPreview(URL.createObjectURL(e.target.files[0]));
+					if(await validateFile(e.target.files[0])){
+						setCommunityEssayLocation(e.target.files[0]);
+						setCommunityEssayPreview(URL.createObjectURL(e.target.files[0]));
+					} else {
+						setCommunityEssayLocation(null);
+						setCommunityEssayPreview(null);
+					}
 				}
 				else{
 					toast.error('File already uploaded.');
@@ -263,8 +287,13 @@ export default function EssaysPage(props) {
 
 			case 'society':
 				if(!societyEssay){
-					setSocietyEssayLocation(e.target.files[0]);
-					setSocietyEssayPreview(URL.createObjectURL(e.target.files[0]));
+					if(await validateFile(e.target.files[0])){
+						setSocietyEssayLocation(e.target.files[0]);
+						setSocietyEssayPreview(URL.createObjectURL(e.target.files[0]));
+					} else {
+						setSocietyEssayLocation(null);
+						setSocietyEssayPreview(null);
+					}
 				}
 				else{
 					toast.error('File already uploaded.');

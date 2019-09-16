@@ -141,9 +141,23 @@ export default function AbstractPage(props) {
 	};
 
 	const handleAbstractChange = async (e) => {
+
+		setAbstractLocation(null);
+		setAbstractPreview(null);
+
 		if(!abstract){
-			setAbstractLocation(e.target.files[0]);
-			setAbstractPreview(URL.createObjectURL(e.target.files[0]));
+			const allowedFileTypesRE = /pdf/;
+			// File size limit: 1 MB
+			if(e.target.files[0].size > 3000000){
+				toast.error('File size should be less than 3MB.');
+			}
+			else if(!allowedFileTypesRE.test(e.target.files[0].type)){
+				toast.error('File type should be in pdf format.');
+			}
+			else {
+				setAbstractLocation(e.target.files[0]);
+				setAbstractPreview(URL.createObjectURL(e.target.files[0]));
+			}
 		}
 		else{
 			toast.error('File already uploaded.');
@@ -173,13 +187,37 @@ export default function AbstractPage(props) {
 	};
 
 	const handleSupportingFilesChange = async (e) => {
+
+		setSupportingFilesLocation([null, null]);
+		setSupportingFilesPreview([null, null]);
+
 		if(!supportingFiles){
 			if(e.target.files[1]){
-				setSupportingFilesLocation([e.target.files[0], e.target.files[1]]);
-				setSupportingFilesPreview([URL.createObjectURL(e.target.files[0]), URL.createObjectURL(e.target.files[1])]);
+				const allowedFileTypesRE = /jpeg|jpg|png|avi|flv|mov|mp4|mkv|wmv/;
+				// File size limit: 10 MB
+				if(e.target.files[0].size > 10000000 && e.target.files[1].size > 10000000){
+					toast.error('Each file size should be less than 10MB.');
+				}
+				else if( !(allowedFileTypesRE.test(e.target.files[0].type) && allowedFileTypesRE.test(e.target.files[1].type)) ){
+					toast.error('File(s) type should be in jpg, jpeg, png, avi, flv, mov, mp4, mkv or wmv format.');
+				}
+				else{
+					setSupportingFilesLocation([e.target.files[0], e.target.files[1]]);
+					setSupportingFilesPreview([URL.createObjectURL(e.target.files[0]), URL.createObjectURL(e.target.files[1])]);
+				}
 			} else {
-				setSupportingFilesLocation([e.target.files[0], null]);
-				setSupportingFilesPreview([URL.createObjectURL(e.target.files[0]), null]);
+				const allowedFileTypesRE = /jpeg|jpg|png|avi|flv|mov|mp4|mkv|wmv/;
+				// File size limit: 10 MB
+				if(e.target.files[0].size > 10000000){
+					toast.error('File size should be less than 10MB.');
+				}
+				else if(!allowedFileTypesRE.test(e.target.files[0].type)){
+					toast.error('File type should be in jpg, jpeg, png, avi, flv, mov, mp4, mkv or wmv format.');
+				}
+				else{
+					setSupportingFilesLocation([e.target.files[0], null]);
+					setSupportingFilesPreview([URL.createObjectURL(e.target.files[0]), null]);
+				}
 			}
 		}
 		else{

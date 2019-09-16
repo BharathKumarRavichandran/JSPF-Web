@@ -4,7 +4,7 @@
 	"description": "Frontend for Jitheshraj Scholarship Portal Form.",
 	"main": "index.js",
 	"scripts": {
-                "build:dev": "webpack -d --config webpack.dev.js",
+		"build:dev": "webpack -d --config webpack.dev.js",
 		"build:prod": "webpack --config webpack.prod.js --mode production",
 		"lint": "eslint .; exit 0",
 		"lint:fix": "eslint . --fix",
