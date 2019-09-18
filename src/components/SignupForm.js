@@ -67,7 +67,7 @@ const validate = {
 	contactNumberCall: value => isMobilePhone(value),
 	contactNumberWhatsapp: value => isMobilePhone(value),
 	confirmPassword: (value, values) => !isEmpty(value) && values.password == value,
-	password: value => (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/).test(value),
+	password: value => (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&'()"+,-./:;<=>^_`|{}~])[A-Za-z\d@$!%*#?&'()"+,-./:;<=>^_`|{}~]{8,}$/).test(value),
 };
 
 const validationMessages = {
@@ -78,7 +78,7 @@ const validationMessages = {
 	contactNumberCall: 'Invalid Mobile number',
 	contactNumberWhatsapp: 'Invalid Mobile number',
 	confirmPassword: 'Confirm password must be equal to password',
-	password: 'Password must contain atleast 1 digit,1 special character and be atleast 8 characters long',
+	password: 'Password must contain atleast 1 lowercase letter, 1 uppercase letter, 1 digit, 1 special character and be atleast 8 characters long',
 };
 
 export default withRouter(function SignUpForm(props) {
