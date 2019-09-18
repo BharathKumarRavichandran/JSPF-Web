@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Form from './Form';
+import FormPage from './FormPage';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import SignUpPage from './SignUpPage';
@@ -14,6 +14,9 @@ import {checkSession as checkSessionHelper} from '../utils/api/auth.helper';
 import { CircularProgress, Box } from '@material-ui/core';
 
 import './css/maintenancePage.css';
+
+// Importing API utils
+import { logout } from '../utils/api/auth.helper';
 
 // Importing config
 import { maintenance } from '../config/config';
@@ -44,13 +47,30 @@ export default function App() {
 
 	const checkSession = async (session) =>{
 		if((await checkSessionHelper(session)).data.data.isLoggedIn==true){
-			setIsLoggedIn(true);
+			if(window.sessionStorage.getItem('session')){
+				setIsLoggedIn(true);
+			}
+			else{
+				setIsLoggedIn(false);
+			}
 			setIsLoading(false);
 		}else{
 			setIsLoggedIn(false);
 			window.sessionStorage.removeItem('session');
 			setSession(false);
 			setIsLoading(false);
+		}
+	};
+
+	const handleLogout = async () => {
+		try{
+			window.sessionStorage.removeItem('session');
+			await logout();
+			setIsLoggedIn(false);
+			setSession(false);
+		} catch (error){
+			// do something 
+			toast.error(error.toString());
 		}
 	};
 
@@ -71,10 +91,9 @@ export default function App() {
 					{
 						!maintenance ? (
 							<Switch>
-								<Route path="/login" render={(props) => <LoginPage {...props} setIsLoggedIn={(data) => setIsLoggedIn(data)} />} />
-								{/* <Route path="/login" exact component={LoginPage} setIsLoggedIn={setIsLoggedIn}/> */}
-								<Route path="/signup" exact component={SignUpPage}/>
-								<PrivateRoute path="/" component={Form} isLoggedIn={isLoggedIn} />
+								<Route path='/login' render={(props) => <LoginPage {...props} setIsLoggedIn={(data) => setIsLoggedIn(data)} />} />
+								<Route exact path='/signup' component={SignUpPage}/>
+								<PrivateRoute path='/' component={FormPage} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
 							</Switch>
 						) : (
 							<Switch>

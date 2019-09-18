@@ -90,12 +90,6 @@ export default function FormPage(props) {
 				const isSubmitted = serverResponse.data.data.submissionStatus;
 				setSubmissionStatus(isSubmitted);
 			}
-			else{
-				if(serverResponse.data.message)
-					toast.error(serverResponse.data.message);
-				else
-					toast.error(serverResponse.statusText);
-			}
 		} catch(error) {
 			toast.error(error.toString());
 		}
@@ -125,6 +119,7 @@ export default function FormPage(props) {
 					<div className={classes.root}>
 						<FormLayout
 							submissionStatus={submissionStatus}
+							handleLogout={props.handleLogout}
 						/>
 						<div>
 							<main className={classes.content}>
@@ -133,12 +128,19 @@ export default function FormPage(props) {
 									{
 										(!submissionStatus) ? (
 											<Switch>
-												<Route exact path='/' component={InstructionsPage}/>
+												<Route exact path='/instructions' component={InstructionsPage}/>
 												<Route exact path='/personal' component={PersonalInfoPage}/>
 												<Route exact path='/certificates' component={CertificatesPage}/>
 												<Route exact path='/abstract' component={AbstractPage}/>
 												<Route exact path='/essays' component={EssaysPage}/>
 												<Route exact path='/review' component={ReviewPage}/>
+												<Route path='/' 
+													render={
+														(props) => {
+															props.history.push('/instructions');
+														}
+													}
+												/>												
 												<Route render={ () => (
 													<div id="notfound">
 														<div className="notfound">
@@ -153,15 +155,15 @@ export default function FormPage(props) {
 												)}/>
 											</Switch>
 										):(
-											<Switch>			
-												<Route exact path='/' 
+											<Switch>	
+												<Route exact path='/application' component={ApplicationPage}/>
+												<Route path='/' 
 													render={
 														(props) => {
 															props.history.push('/application');
 														}
 													}
 												/>
-												<Route exact path='/application' component={ApplicationPage}/>
 												<Route render={ () => (
 													<div id="notfound">
 														<div className="notfound">
@@ -185,8 +187,21 @@ export default function FormPage(props) {
 			);
 		}
 		else {
-			return(
-				<EmailVerify isInsti={true} onVerifySuccess={updateFormAccess}></EmailVerify>
+			return (
+				<BrowserRouter>
+					<Switch>
+						<Route exact path='/instiEmailVerify' render={ () => (
+							<EmailVerify isInsti={true} onVerifySuccess={updateFormAccess}></EmailVerify>
+						)}/>
+						<Route path='/' 
+							render={
+								(props) => {
+									props.history.push('/instiEmailVerify');
+								}
+							}
+						/>
+					</Switch>
+				</BrowserRouter>
 			);
 		}
 	}

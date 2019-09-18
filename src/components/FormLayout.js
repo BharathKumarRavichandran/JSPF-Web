@@ -26,9 +26,7 @@ import AttachFileIcon from '@material-ui/icons/AttachFile';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
-// Importing API utils
-import { logout } from '../utils/api/auth.helper';
+import { Button } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -44,6 +42,12 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up('sm')]: {
 			width: `calc(100% - ${drawerWidth}px)`,
 		},
+	},
+	lowercase: {
+		textTransform: 'lowercase'
+	},
+	capitalize: {
+		textTransform: 'capitalize'
 	},
 	drawer: {
 		[theme.breakpoints.up('sm')]: {
@@ -79,18 +83,11 @@ export default function FormLayout(props) {
 	const classes = useStyles();
 	const theme = useTheme();
 
-	const [redirectToLogin, setRedirectToLogin] = React.useState(false);
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 
 	function handleDrawerToggle() {
 		setMobileOpen(!mobileOpen);
 	}
-    
-	const handleLogout = async () => {
-		window.sessionStorage.removeItem('session');
-		await logout();
-		setRedirectToLogin(true);
-	};
 
 	const drawer1 = (
 		<div>
@@ -121,7 +118,7 @@ export default function FormLayout(props) {
 					<ListItemIcon><RateReviewIcon/></ListItemIcon>
 					<ListItemText primary={'Review'} />
 				</ListItem>
-				<ListItem button component="button" onClick={handleLogout}>
+				<ListItem button className={classes.capitalize} component={Button} onClick={props.handleLogout}>
 					<ListItemIcon><ExitToAppIcon/></ListItemIcon>
 					<ListItemText primary={'Logout'} />
 				</ListItem>
@@ -138,7 +135,7 @@ export default function FormLayout(props) {
 					<ListItemIcon><InfoIcon/></ListItemIcon>
 					<ListItemText primary={'Application'} />
 				</ListItem>
-				<ListItem button component="button" onClick={handleLogout}>
+				<ListItem button className={classes.capitalize} component={Button} onClick={props.handleLogout}>
 					<ListItemIcon><ExitToAppIcon/></ListItemIcon>
 					<ListItemText primary={'Logout'} />
 				</ListItem>
@@ -156,61 +153,57 @@ export default function FormLayout(props) {
 		)
 	);
 
-	if(redirectToLogin){
-		return <Redirect push to={{ pathname: '/login' }} />;
-	}
-	else{
-		return (
-			<div>
-				<CssBaseline />
-				<AppBar position="fixed" className={classes.appBar}>
-					<Toolbar>
-						<IconButton
-							color="inherit"
-							aria-label="Open drawer"
-							edge="start"
-							onClick={handleDrawerToggle}
-							className={classes.menuButton}
-						>
-							<MenuIcon />
-						</IconButton>
-						<Typography variant="h6" noWrap className={classes.appHeader}>
-                            JITHESHRAJ SCHOLARSHIP APPLICATION PORTAL 2019-2020
-						</Typography>
-					</Toolbar>
-				</AppBar>
-				<nav className={classes.drawer} aria-label="Mailbox folders">
-					{/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-					<Hidden smUp implementation="css">
-						<Drawer
-							container={container}
-							variant="temporary"
-							anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-							open={mobileOpen}
-							onClose={handleDrawerToggle}
-							classes={{
-								paper: classes.drawerPaper,
-							}}
-							ModalProps={{
-								keepMounted: true, // Better open performance on mobile.
-							}}
-						>
-							{drawer}
-						</Drawer>
-					</Hidden>
-					<Hidden xsDown implementation="css">
-						<Drawer
-							classes={{
-								paper: classes.drawerPaper,
-							}}
-							variant="permanent"
-							open
-						>
-							{drawer}
-						</Drawer>
-					</Hidden>
-				</nav>
-			</div>
-		);
-	}
+	return (
+		<div>
+			<CssBaseline />
+			<AppBar position="fixed" className={classes.appBar}>
+				<Toolbar>
+					<IconButton
+						color="inherit"
+						aria-label="Open drawer"
+						edge="start"
+						onClick={handleDrawerToggle}
+						className={classes.menuButton}
+					>
+						<MenuIcon />
+					</IconButton>
+					<Typography variant="h6" noWrap className={classes.appHeader}>
+						JITHESHRAJ SCHOLARSHIP APPLICATION PORTAL 2019-2020
+					</Typography>
+				</Toolbar>
+			</AppBar>
+			<nav className={classes.drawer} aria-label="Mailbox folders">
+				{/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+				<Hidden smUp implementation="css">
+					<Drawer
+						container={container}
+						variant="temporary"
+						anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+						open={mobileOpen}
+						onClose={handleDrawerToggle}
+						classes={{
+							paper: classes.drawerPaper,
+						}}
+						ModalProps={{
+							keepMounted: true, // Better open performance on mobile.
+						}}
+					>
+						{drawer}
+					</Drawer>
+				</Hidden>
+				<Hidden xsDown implementation="css">
+					<Drawer
+						classes={{
+							paper: classes.drawerPaper,
+						}}
+						variant="permanent"
+						open
+					>
+						{drawer}
+					</Drawer>
+				</Hidden>
+			</nav>
+		</div>
+	);
+
 }
