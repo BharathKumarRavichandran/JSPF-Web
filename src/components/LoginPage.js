@@ -175,6 +175,5 @@ export default function LoginPage(props) {
 }
 
 LoginPage.propTypes = {
-	location: PropTypes.object.isRequired,
 	setIsLoggedIn: PropTypes.func.isRequired
 };

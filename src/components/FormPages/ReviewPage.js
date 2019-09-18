@@ -207,7 +207,7 @@ export default function ReviewPage(props) {
 
 	const handleDialogClose = async () => {
 		setOpenDialog(false);
-	}
+	};
 
 	useEffect( () => {
 		async function fetchAPI() {

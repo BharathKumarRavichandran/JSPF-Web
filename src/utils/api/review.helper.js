@@ -8,11 +8,11 @@ const serverURL = url.API_BASE_URL;
 
 const getAllPendingRequirements = async () => {
 	return get(`${serverURL}/requirements/pending/all`);
-}
+};
 
 const getNecessaryPendingRequirements = async () => {
 	return get(`${serverURL}/requirements/pending/necessary`);
-}
+};
 
 const updateSignature = async (signature) => {
 	return post(`${serverURL}/signature/update`, { signature });

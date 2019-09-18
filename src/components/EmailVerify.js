@@ -212,5 +212,5 @@ EmailVerify.propTypes = {
 	setEmailVerified: PropTypes.bool.isRequired,
 	setVerificationCode: PropTypes.bool.isRequired,
 	setEmail: PropTypes.bool.isRequired,
-	onVerifySuccess: PropTypes.bool.isRequired
+	onVerifySuccess: PropTypes.func.isRequired
 };

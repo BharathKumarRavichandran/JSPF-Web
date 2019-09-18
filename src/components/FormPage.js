@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { toast } from 'react-toastify';
 
@@ -206,3 +207,7 @@ export default function FormPage(props) {
 		}
 	}
 }
+
+FormPage.propTypes = {
+	handleLogout: PropTypes.func.isRequired
+};

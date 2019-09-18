@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -81,7 +83,7 @@ const validationMessages = {
 	password: 'Password must contain atleast 1 lowercase letter, 1 uppercase letter, 1 digit, 1 special character and be atleast 8 characters long',
 };
 
-export default withRouter(function SignUpForm(props) {
+const SignUpForm = (props) => {
 	const classes = useStyles();
 	const [canSubmit, setCanSubmit] = React.useState(false);
 	const [values, setValues] = React.useState({
@@ -301,4 +303,11 @@ export default withRouter(function SignUpForm(props) {
 			</div>
 		</Container>
 	);
-});
+};
+
+export default withRouter(SignUpForm);
+
+SignUpForm.propTypes = {
+	email: PropTypes.string,
+	verificationCode: PropTypes.string
+};

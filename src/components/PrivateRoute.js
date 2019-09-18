@@ -25,5 +25,6 @@ export default function PrivateRoute({ component: Component, isLoggedIn, handleL
 }
 
 PrivateRoute.propTypes = {
+	handleLogout: PropTypes.func.isRequired,
 	location: PropTypes.object.isRequired
 };
