@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 	paper: {
 		// flexGrow: 1,
 		padding: theme.spacing(3),
+		width: 'inherit'
 	},
 	red : {
 		color: 'red',
@@ -37,7 +38,9 @@ const useStyles = makeStyles(theme => ({
 		transform: 'translate(-50%, -50%)',
 	},
 	heading: {
-		textAlign: 'center'
+		textAlign: 'center',
+		textTransform: 'uppercase',
+		fontWeight: '300'
 	},
 	textField: {
 		marginLeft: theme.spacing(1),

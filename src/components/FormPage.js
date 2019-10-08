@@ -69,6 +69,9 @@ const useStyles = makeStyles(theme => ({
 	},
 	drawerPaper: {
 		width: drawerWidth,
+	},
+	mainDiv: {
+		width: '100%'
 	}
 }));
 
@@ -122,7 +125,7 @@ export default function FormPage(props) {
 							submissionStatus={submissionStatus}
 							handleLogout={props.handleLogout}
 						/>
-						<div>
+						<div className={classes.mainDiv}>
 							<main className={classes.content}>
 								<div className={classes.toolbar} />
 								<Grid container justify = 'center'>

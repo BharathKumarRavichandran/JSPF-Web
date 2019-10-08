@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
 	paper: {
 		// flexGrow: 1,
 		padding: theme.spacing(3),
+		width: 'inherit'
 	},
 	centeredContainer: {
 		display: 'flex',
@@ -29,7 +30,9 @@ const useStyles = makeStyles(theme => ({
 		display:'flex'
 	},
 	heading: {
-		textAlign: 'center'
+		textAlign: 'center',
+		textTransform: 'uppercase',
+		fontWeight: '300'
 	}
 }));
 

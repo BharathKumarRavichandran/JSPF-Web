@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
 	paper: {
 		// flexGrow: 1,
 		padding: theme.spacing(3),
+		width: 'inherit'
 	},
 	centeredContainer: {
 		display: 'flex',

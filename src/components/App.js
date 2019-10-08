@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,6 +21,21 @@ import { logout } from '../utils/api/auth.helper';
 // Importing config
 import { maintenance } from '../config/config';
 
+// Create a new theme using Nunito Sans
+const theme = createMuiTheme({
+	typography: {
+		fontFamily: 'Montserrat, Raleway, sans-serif'
+	},
+	centeredContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		height:'100vh'
+	},
+});
+
+/*
 const useStyles = makeStyles(theme => ({
 	centeredContainer: {
 		display: 'flex',
@@ -30,6 +45,7 @@ const useStyles = makeStyles(theme => ({
 		height:'100vh'
 	},
 }));
+*/
 
 // Add configuration settings for react-toastify
 toast.configure({
@@ -39,7 +55,8 @@ toast.configure({
 });
 
 export default function App() {
-	const classes = useStyles();
+	// const classes = useStyles();
+	const classes = theme;
 
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
@@ -87,31 +104,33 @@ export default function App() {
 	} else {
 		return (
 			<BrowserRouter>
-				<div className="App">
-					{
-						!maintenance ? (
-							<Switch>
-								<Route path='/login' render={(props) => <LoginPage {...props} setIsLoggedIn={(data) => setIsLoggedIn(data)} />} />
-								<Route exact path='/signup' component={SignUpPage}/>
-								<PrivateRoute path='/' component={FormPage} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-							</Switch>
-						) : (
-							<Switch>
-								<Route render={() => (
-									<div id="maintenance">
-										<div className="maintenance">
-											<div className="maintenance-image">
-												<span></span>
+				<MuiThemeProvider theme={theme}>
+					<div className="App">
+						{
+							!maintenance ? (
+								<Switch>
+									<Route path='/login' render={(props) => <LoginPage {...props} setIsLoggedIn={(data) => setIsLoggedIn(data)} />} />
+									<Route exact path='/signup' component={SignUpPage}/>
+									<PrivateRoute path='/' component={FormPage} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+								</Switch>
+							) : (
+								<Switch>
+									<Route render={() => (
+										<div id="maintenance">
+											<div className="maintenance">
+												<div className="maintenance-image">
+													<span></span>
+												</div>
+												<h2>Oops! We are under maintenance</h2>
+												<p>Sorry, we are trying our best to fix the issues! Come back soon!</p>
 											</div>
-											<h2>Oops! We are under maintenance</h2>
-											<p>Sorry, we are trying our best to fix the issues! Come back soon!</p>
 										</div>
-									</div>
-								)}/>
-							</Switch>
-						)
-					}
-				</div>
+									)}/>
+								</Switch>
+							)
+						}
+					</div>
+				</MuiThemeProvider>
 			</BrowserRouter>
 		);
 	}

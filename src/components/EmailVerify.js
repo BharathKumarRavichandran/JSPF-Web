@@ -155,7 +155,7 @@ export default function EmailVerify(props) {
 						onChange={handleEmailInput}
 						error={emailError}
 					/>
-					<Typography variant="body1">{!(props.isInsti)?'All official notices from JSPF will be sent to this Email ID. Kindly register using an ID you frequently check. This will also be your userID for subsequent logins':'Please verify institute email to access the form'}</Typography>
+					<Typography variant="body1">{!(props.isInsti)?'All official notices from JSPF will be sent to this Email ID. Kindly register using an ID you frequently check. This will also be your userID for subsequent logins.':'Please verify institute email to access the form'}</Typography>
 
 					{emailSubmitted ? <TextField
 						variant="outlined"

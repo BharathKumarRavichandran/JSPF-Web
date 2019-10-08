@@ -56,7 +56,8 @@ const useStyles = makeStyles(theme => ({
 	},
 	heading: {
 		textAlign: 'center',
-		textTransform: 'uppercase'
+		textTransform: 'uppercase',
+		fontWeight: '300'
 	},
 	subheading: {
 

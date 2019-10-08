@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
 // import '@babel/polyfill';
 
+import './index.css';
 
 render(
 	<BrowserRouter>
