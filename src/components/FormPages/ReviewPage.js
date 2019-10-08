@@ -41,6 +41,7 @@ const useStyles = makeStyles(theme => ({
 	paper: {
 		// flexGrow: 1,
 		padding: theme.spacing(3),
+		width: 'inherit'
 	},
 	textField: {
 		marginLeft: theme.spacing(1),
@@ -231,118 +232,130 @@ export default function ReviewPage(props) {
 		return (
 			<Paper className={classes.paper}>
 				<Typography variant="h3" className={classes.heading} gutterBottom>Review</Typography>
-				<Box>
-					<Typography variant="h6" className={classes.subheading} gutterBottom>Pending required fields
-						<span className={classes.red}> *</span>
-					</Typography>
-					{
-						requirements.necessaryRequirements.personalInfo[0] ?
-							(
-								<Box>
-									<div>Personal Information</div>
-									<ul>
-										{requirements.necessaryRequirements.personalInfo.map((value, index) => (
-											<li key={index}>{value}</li>
-										))}
-									</ul>
-								</Box>
-							) : ( null )
-					}
-					{
-						requirements.necessaryRequirements.certificates[0] ?
-							(
-								<Box>
-									<div>Certificates and Grade Sheets</div>
-									<ul>
-										{requirements.necessaryRequirements.certificates.map((value, index) => (
-											<li key={index}>{value}</li>
-										))}
-									</ul>
-								</Box>
-							) : ( null )
-					}
-					{
-						requirements.necessaryRequirements.abstract[0] ?
-							(
-								<Box>
-									<div>Project Abstract</div>
-									<ul>
-										{requirements.necessaryRequirements.abstract.map((value, index) => (
-											<li key={index}>{value}</li>
-										))}
-									</ul>
-								</Box>
-							) : ( null )
-					}
-					{
-						requirements.necessaryRequirements.essays[0] ?
-							(
-								<Box>
-									<div>Essays</div>
-									<ul>
-										{requirements.necessaryRequirements.essays.map((value, index) => (
-											<li key={index}>{value}</li>
-										))}
-									</ul>
-								</Box>
-							) : ( null )
-					}
-				</Box>
-				<Box>
-					<Typography variant="h6" className={classes.subheading} gutterBottom>Optional unfilled fields</Typography>
-					{
-						requirements.optionalRequirements.personalInfo[0] ?
-							(
-								<Box>
-									<div>Personal Information</div>
-									<ul>
-										{requirements.optionalRequirements.personalInfo.map((value, index) => (
-											<li key={index}>{value}</li>
-										))}
-									</ul>
-								</Box>
-							) : ( null )
-					}
-					{
-						requirements.optionalRequirements.certificates[0] ?
-							(
-								<Box>
-									<div>Certificates and Grade Sheets</div>
-									<ul>
-										{requirements.optionalRequirements.certificates.map((value, index) => (
-											<li key={index}>{value}</li>
-										))}
-									</ul>
-								</Box>
-							) : ( null )
-					}
-					{
-						requirements.optionalRequirements.abstract[0] ?
-							(
-								<Box>
-									<div>Project Abstract</div>
-									<ul>
-										{requirements.optionalRequirements.abstract.map((value, index) => (
-											<li key={index}>{value}</li>
-										))}
-									</ul>
-								</Box>
-							) : ( null )
-					}
-					{
-						requirements.optionalRequirements.essays[0] ?
-							(
-								<Box>
-									<div>Essays</div>
-									<ul>
-										{requirements.optionalRequirements.essays.map((value, index) => (
-											<li key={index}>{value}</li>
-										))}
-									</ul>
-								</Box>
-							) : ( null )
-					}
-				</Box>
+				{
+					( requirements.necessaryRequirements.personalInfo[0] || requirements.necessaryRequirements.certificates[0] || requirements.necessaryRequirements.abstract[0] || 
+					requirements.necessaryRequirements.essays[0] ) ?
+						(
+							<Box>
+								<Typography variant="h6" className={classes.subheading} gutterBottom>Pending required fields
+									<span className={classes.red}> *</span>
+								</Typography>
+								{
+									requirements.necessaryRequirements.personalInfo[0] ?
+										(
+											<Box>
+												<div>Personal Information</div>
+												<ul>
+													{requirements.necessaryRequirements.personalInfo.map((value, index) => (
+														<li key={index}>{value}</li>
+													))}
+												</ul>
+											</Box>
+										) : ( null )
+								}
+								{
+									requirements.necessaryRequirements.certificates[0] ?
+										(
+											<Box>
+												<div>Certificates and Grade Sheets</div>
+												<ul>
+													{requirements.necessaryRequirements.certificates.map((value, index) => (
+														<li key={index}>{value}</li>
+													))}
+												</ul>
+											</Box>
+										) : ( null )
+								}
+								{
+									requirements.necessaryRequirements.abstract[0] ?
+										(
+											<Box>
+												<div>Project Abstract</div>
+												<ul>
+													{requirements.necessaryRequirements.abstract.map((value, index) => (
+														<li key={index}>{value}</li>
+													))}
+												</ul>
+											</Box>
+										) : ( null )
+								}
+								{
+									requirements.necessaryRequirements.essays[0] ?
+										(
+											<Box>
+												<div>Essays</div>
+												<ul>
+													{requirements.necessaryRequirements.essays.map((value, index) => (
+														<li key={index}>{value}</li>
+													))}
+												</ul>
+											</Box>
+										) : ( null )
+								}
+							</Box>
+						) : ( null )
+				}
+				{
+					( requirements.optionalRequirements.personalInfo[0] || requirements.optionalRequirements.certificates[0] || requirements.optionalRequirements.abstract[0] || 
+					requirements.optionalRequirements.essays[0] ) ?
+						(
+							<Box>
+								<Typography variant="h6" className={classes.subheading} gutterBottom>Optional unfilled fields</Typography>
+								{
+									requirements.optionalRequirements.personalInfo[0] ?
+										(
+											<Box>
+												<div>Personal Information</div>
+												<ul>
+													{requirements.optionalRequirements.personalInfo.map((value, index) => (
+														<li key={index}>{value}</li>
+													))}
+												</ul>
+											</Box>
+										) : ( null )
+								}
+								{
+									requirements.optionalRequirements.certificates[0] ?
+										(
+											<Box>
+												<div>Certificates and Grade Sheets</div>
+												<ul>
+													{requirements.optionalRequirements.certificates.map((value, index) => (
+														<li key={index}>{value}</li>
+													))}
+												</ul>
+											</Box>
+										) : ( null )
+								}
+								{
+									requirements.optionalRequirements.abstract[0] ?
+										(
+											<Box>
+												<div>Project Abstract</div>
+												<ul>
+													{requirements.optionalRequirements.abstract.map((value, index) => (
+														<li key={index}>{value}</li>
+													))}
+												</ul>
+											</Box>
+										) : ( null )
+								}
+								{
+									requirements.optionalRequirements.essays[0] ?
+										(
+											<Box>
+												<div>Essays</div>
+												<ul>
+													{requirements.optionalRequirements.essays.map((value, index) => (
+														<li key={index}>{value}</li>
+													))}
+												</ul>
+											</Box>
+										) : ( null )
+								}
+							</Box>
+				) : ( null )
+				}
 				<Box>
 					<div>
 						<div>Declaration of Confirmation<span className={classes.red}> *</span></div>
