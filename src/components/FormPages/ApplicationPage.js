@@ -87,7 +87,14 @@ export default function ApplicationPage(props) {
 				</Typography>
 				<Box className={classes.centeredContainer}>
 					<Button variant='contained' color='primary' className={classes.button}>
-						<Link to={applicationFilePath} className={classes.link}>View Application</Link>
+						<a
+							href={applicationFilePath}
+							className={classes.link}
+							target='_blank'
+							rel='noopener noreferrer'
+						>
+							View Application
+						</a>
 					</Button>
 				</Box>
 			</Paper>
