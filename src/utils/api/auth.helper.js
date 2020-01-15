@@ -33,6 +33,14 @@ const checkFormAccess = async () => {
 	return get(`${serverURL}/form/access`);
 };
 
+const forgotPassword = async (email) => {
+	return post(`${serverURL}/auth/student/password/forgot`, { email });
+}
+
+const resetPassword = async (values) => {
+	return post(`${serverURL}/auth/student/password/reset`, values);
+}
+
 const logout = async () => {
 	return post(`${serverURL}/auth/student/logout`);
 };
@@ -44,5 +52,7 @@ export {
 	registerStudent,
 	checkFormAccess,
 	checkSession,
+	forgotPassword,
+	resetPassword,
 	logout
 };

@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import FormPage from './FormPage';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import LoginPage from './LoginPage';
+import ForgotPassword from './ForgotPassword';
 import SignUpPage from './SignUpPage';
 import PrivateRoute from './PrivateRoute';
 import {checkSession as checkSessionHelper} from '../utils/api/auth.helper';
@@ -111,6 +112,7 @@ export default function App() {
 								<Switch>
 									<Route path='/login' render={(props) => <LoginPage {...props} setIsLoggedIn={(data) => setIsLoggedIn(data)} />} />
 									<Route exact path='/signup' component={SignUpPage}/>
+									<Route exact path='/forgot-password' component={ForgotPassword}/>
 									<PrivateRoute path='/' component={FormPage} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
 								</Switch>
 							) : (

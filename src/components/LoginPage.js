@@ -157,7 +157,7 @@ export default function LoginPage(props) {
 	  					</Button>
 						<Grid container>
 							<Grid item xs>
-								<Link component={RouterLink} to="#" variant="body2">
+								<Link component={RouterLink} to="/forgot-password" variant="body2">
 									Forgot password?
 								</Link>
 							</Grid>
