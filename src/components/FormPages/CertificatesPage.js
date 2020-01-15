@@ -302,7 +302,7 @@ export default function CertificatesPage(props) {
 										Choose File
 										<input
 											type="file"
-											onChange={ (e) => { handleFileChange(e,'gradeSheetSem1'); } }
+											onChange={ (e) => { e.persist(); handleFileChange(e,'gradeSheetSem1'); } }
 											style={{ display: 'none' }}
 										/>
 									</Button>
@@ -356,7 +356,7 @@ export default function CertificatesPage(props) {
 										Choose File
 										<input
 											type="file"
-											onChange={ (e) => { handleFileChange(e,'instiCertificate'); } }
+											onChange={ (e) => { e.persist(); handleFileChange(e,'instiCertificate'); } }
 											style={{ display: 'none' }}
 										/>
 									</Button>
@@ -405,7 +405,7 @@ export default function CertificatesPage(props) {
 										Choose File
 										<input
 											type="file"
-											onChange={ (e) => { handleFileChange(e,'nonInstiCertificate'); } }
+											onChange={ (e) => { e.persist(); handleFileChange(e,'nonInstiCertificate'); } }
 											style={{ display: 'none' }}
 										/>
 									</Button>
@@ -454,7 +454,7 @@ export default function CertificatesPage(props) {
 									Choose File
 										<input
 											type='file'
-											onChange={ (e) => { handleFileChange(e,'gradeSheetMOOC'); } }
+											onChange={ (e) => { e.persist(); handleFileChange(e,'gradeSheetMOOC'); } }
 											style={{ display: 'none' }}
 										/>
 									</Button>

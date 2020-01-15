@@ -579,7 +579,7 @@ export default function EssaysPage(props) {
 											Choose File
 												<input
 													type="file"
-													onChange={ (e) => { handleFileChange(e,'sop'); } }
+													onChange={ (e) => { e.persist(); handleFileChange(e,'sop'); } }
 													style={{ display: 'none' }}
 												/>
 											</Button>
@@ -628,7 +628,7 @@ export default function EssaysPage(props) {
 											Choose File
 												<input
 													type="file"
-													onChange={ (e) => { handleFileChange(e,'community'); } }
+													onChange={ (e) => { e.persist(); handleFileChange(e,'community'); } }
 													style={{ display: 'none' }}
 												/>
 											</Button>
@@ -677,7 +677,7 @@ export default function EssaysPage(props) {
 											Choose File
 												<input
 													type="file"
-													onChange={ (e) => { handleFileChange(e,'society'); } }
+													onChange={ (e) => { e.persist(); handleFileChange(e,'society'); } }
 													style={{ display: 'none' }}
 												/>
 											</Button>
