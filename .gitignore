@@ -5,8 +5,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+.directory
 .vscode/
 node_modules/
+build/
 dist/
-public/
 .env
